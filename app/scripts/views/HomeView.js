@@ -7,7 +7,7 @@ QuitoFrontend.Views = QuitoFrontend.Views || {};
 
     QuitoFrontend.Views.HomeView = Backbone.View.extend({
 
-        template: JST['app/scripts/templates/HomeView.ejs'],
+        template: JST['app/scripts/templates/HomeView.hbs'],
 
         tagName: 'div',
 

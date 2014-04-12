@@ -7,7 +7,7 @@ QuitoFrontend.Views = QuitoFrontend.Views || {};
 
     QuitoFrontend.Views.ProfileView = Backbone.View.extend({
 
-        template: JST['app/scripts/templates/ProfileView.ejs'],
+        template: JST['app/scripts/templates/ProfileView.hbs'],
 
         tagName: 'div',
 
