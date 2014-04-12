@@ -4,7 +4,7 @@
     "appName": "QuitoFrontend",
     "coffee": false,
     "testFramework": "mocha",
-    "templateFramework": "lodash",
+    "templateFramework": "handlebars",
     "compassBootstrap": false,
     "includeRequireJS": false
   }
