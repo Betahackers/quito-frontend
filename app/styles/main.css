@@ -57,6 +57,13 @@ body {
 
 .profile-people-img {
     float: left;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+
+.profile-image {
+    border-radius: 50%;
 }
 
 .profile-people-name {
