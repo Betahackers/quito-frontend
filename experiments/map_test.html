@@ -33,31 +33,52 @@
             
             #filter-container>a {
                 display: block;
-                background-color: rgba(0, 0, 0, 0.8);
                 color: white;
-                width: 500px;
-                font-size: 32px;
-                margin-bottom: 20px;
+                width: 150px;
+                font-size: 18px;
+                margin-bottom: 10px;
                 padding-left: 20px;
+                padding-top: 7px;
+                padding-bottom: 7px;
+                box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+            }
+            
+            #filter-container>ul {
+                padding: 0;
             }
 
             #filter-container>a:hover {
                 text-decoration: none;
             }
-                        
-            #filter-container>ul {
-                list-style: none;
-                background-color: #f08080;
-                padding-left: 0;
-                font-size: 32px;
-                color: white;
-                padding-left: 20px;
-            }
-            
+
             #filter-container li {
-                margin-bottom: 5px;
+                list-style: none;
+                color: white;
+                width: 150px;
+                font-size: 18px;
+                margin-bottom: 10px;
+                padding-left: 20px;
+                padding-top: 7px;
+                padding-bottom: 7px;
+                box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
             }
             
+            a#moodsDropdown {
+                background-color: rgba(85, 182, 101, 1);
+            }
+
+            #moods>li {
+                background-color: rgba(85, 182, 101, 1);
+            }
+            
+            a#categoriesDropdown {
+                background-color: rgba(155, 212, 57, 1);
+            }
+            
+            #categories>li {
+                background-color: rgba(155, 212, 57, 1);
+            }
+
         </style>
         
     </head>
@@ -67,7 +88,7 @@
         </div>
         
         <div id="filter-container">
-            <a href="#" data-toggle="collapse" data-target="#moods">Mood</a>
+            <a id="moodsDropdown" href="#" data-toggle="collapse" data-target="#moods">Mood</a>
             <ul id="moods" class="collapse">
                 <li>Happy</li>
                 <li>In love</li>
@@ -76,7 +97,7 @@
                 <li>We're never gonna make it!</li>
             </ul>
             
-            <a href="#" data-toggle="collapse" data-target="#categories">Category</a>
+            <a id="categoriesDropdown" href="#" data-toggle="collapse" data-target="#categories">Category</a>
             <ul id="categories" class="collapse">
                 <li>Architecture</li>
                 <li>Nightlife</li>
@@ -98,6 +119,14 @@
                                 ]
                     };
                     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+                    var styles = [{ "stylers": [{ "saturation": -100 }] }];
+                    var styledMapOptions = {};
+                    
+                    var mapType = new google.maps.StyledMapType(styles, styledMapOptions);
+                    
+                    map.mapTypes.set('maptype', mapType);
+                    map.setMapTypeId('maptype');
                 }
                 
                 google.maps.event.addDomListener(window, 'load', initialize);
