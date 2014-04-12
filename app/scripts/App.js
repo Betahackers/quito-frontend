@@ -22,9 +22,7 @@
   //Regions can contain views, Layouts, or subregions nested as necessary
   QuitoFrontend.addRegions({
     headerRegion:"header",
-    mainRegion:"#content",
-    creditsRegion:"#credits",
-    seqPanelRegion:"#sequencer_panel"
+    mainRegion:"#content"
   });
 
 
@@ -47,7 +45,7 @@ $(document).ready(function () {
   'use strict';
   QuitoFrontend.init();
   QuitoFrontend.HomeView = new QuitoFrontend.Views.HomeView();
-//  NeuronalSynchrony.creditsRegion.show(NeuronalSynchrony.MainMenuView)
+  QuitoFrontend.mainRegion.show(QuitoFrontend.HomeView)
 //
 //  NeuronalSynchrony.Song = new NeuronalSynchrony.Collections.SongCollection;
 //  NeuronalSynchrony.SequencerLayout = new NeuronalSynchrony.Layouts.SequencerLayout();
