@@ -19,6 +19,13 @@
                 padding: 0;
                 font-family: sans-serif;
             }
+            
+            .navbar-brand {
+                margin-left: 40px;
+                font-size: 34px;
+                color: black !important;
+            }
+            
             #map-canvas {
                 height: 100%;
                 z-order: 0;
@@ -41,6 +48,7 @@
                 padding-top: 7px;
                 padding-bottom: 7px;
                 box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+                border-radius: 0 2px 2px 0;
             }
             
             #filter-container>ul {
@@ -87,6 +95,9 @@
         
     </head>
     <body>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <a class="navbar-brand" href="#">Fromto</a>
+        </nav>
 
         <div id="map-canvas">
         </div>
@@ -118,6 +129,9 @@
                 function initialize() {
                     var mapOptions = {
                         center: new google.maps.LatLng(41.39479, 2.1487679),
+                        zoomControl: false,
+                        mapTypeControl: false,
+                        panControl: false,
                         zoom: 14,
                                 "stylers": [
                                   { "saturation": -100 }
