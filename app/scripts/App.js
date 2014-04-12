@@ -27,7 +27,16 @@
 
 
   QuitoFrontend.addInitializer(function () {
-    Backbone.history.start();
+//    Backbone.history.start();
+    App.appRouter = new QuitoFrontend.Routers.AppRouter({
+      controller:new QuitoFrontend.AppController()
+    });
+  });
+
+  QuitoFrontend.on("initialize:after", function(){
+    if(Backbone.history){
+      Backbone.history.start();
+    }
   });
 
 
