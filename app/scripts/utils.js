@@ -7,3 +7,7 @@
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
   }
 
+  $('#happy').on('click', function (e) {
+    console.log("click hello man.")
+    $('#info').show();
+  })
