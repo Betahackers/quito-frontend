@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Fromto map</title>
+        <title>Fromto</title>
         <link rel="stylesheet" href="css/bootstrap.css">
         <style>
             html { 
@@ -20,9 +20,15 @@
                 font-family: sans-serif;
             }
             
+            .navbar {
+                background-color: rgba(230, 230, 230, 1);
+                height: 65px;
+                padding-top: 6px;
+            }
+            
             .navbar-brand {
-                margin-left: 40px;
-                font-size: 34px;
+                margin-left: 10px;
+                font-size: 38px;
                 color: black !important;
             }
             
@@ -38,7 +44,51 @@
                 font-size: 14px;
             }
             
-            #filter-container>a {
+            #filter-container a {
+                color: white;
+            }
+            
+            #filter-container a:hover {
+                text-decoration: none;
+            }
+
+            .filter-box {
+                display: block;
+                color: white;
+                width: 150px;
+                font-size: 18px;
+                margin-bottom: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 7px;
+                padding-bottom: 7px;
+                box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.25);
+                border-radius: 0 2px 2px 0;
+            }
+            
+            .filter-box ul {
+                list-style: none;
+                padding: 0;
+                border-top: 1px solid white;
+                font-size: 14px;
+                
+                line-height: 2;
+                margin-top: 10px;
+                padding-top: 9px;
+                padding-left: 10px;
+            }
+            
+            .filter-moods {
+                background-color: rgba(85, 182, 101, 1);
+            }
+            
+            .filter-categories {
+                background-color: rgba(155, 212, 57, 1);
+            }
+            
+            .profiles-box {
+                background-color: rgba(59, 174, 251, 1);
+
                 display: block;
                 color: white;
                 width: 150px;
@@ -47,48 +97,8 @@
                 padding-left: 20px;
                 padding-top: 7px;
                 padding-bottom: 7px;
-                box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+                box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.25);
                 border-radius: 0 2px 2px 0;
-            }
-            
-            #filter-container>ul {
-                padding: 0;
-            }
-
-            #filter-container>a:hover {
-                text-decoration: none;
-            }
-
-            #filter-container li {
-                list-style: none;
-                color: white;
-                width: 150px;
-                font-size: 18px;
-                margin-bottom: 10px;
-                padding-left: 20px;
-                padding-top: 7px;
-                padding-bottom: 7px;
-                box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-            }
-            
-            a#moodsDropdown {
-                background-color: rgba(85, 182, 101, 1);
-            }
-
-            #moods>li {
-                background-color: rgba(85, 182, 101, 1);
-            }
-            
-            a#categoriesDropdown {
-                background-color: rgba(155, 212, 57, 1);
-            }
-            
-            #categories>li {
-                background-color: rgba(155, 212, 57, 1);
-            }
-            
-            #profilesLink {
-                background-color: rgba(59, 174, 251, 1);
             }
 
         </style>
@@ -103,23 +113,41 @@
         </div>
         
         <div id="filter-container">
-            <a id="moodsDropdown" href="#" data-toggle="collapse" data-target="#moods">Mood</a>
-            <ul id="moods" class="collapse">
-                <li>Happy</li>
-                <li>In love</li>
-                <li>Sad</li>
-                <li>Anxious</li>
-                <li>We're never gonna make it!</li>
-            </ul>
+            <div class="filter-box filter-moods">
+                <a id="moodsDropdown" href="#" data-toggle="collapse" data-target="#moods">Mood</a>
+                <ul id="moods" class="collapse">
+                    <li><a href="#">Happy</a></li>
+                    <li><a href="#">In love</a></li>
+                    <li><a href="#">Sad</a></li>
+                    <li><a href="#">Panicking</a></li>
+                </ul>
+            </div>
             
-            <a id="categoriesDropdown" href="#" data-toggle="collapse" data-target="#categories">Category</a>
-            <ul id="categories" class="collapse">
-                <li>Architecture</li>
-                <li>Nightlife</li>
-                <li>Restaurants</li>
-            </ul>
+            <div class="filter-box filter-categories">
+                <a id="categoriesDropdown" href="#" data-toggle="collapse" data-target="#categories">Category</a>
+                <ul id="categories" class="collapse">
+
+                    <li><a href="#">Eat</a></li>
+                    <li><a href="#">Drink</a></li>
+                    <li><a href="#">Healthy Life</a></li>
+                    <li><a href="#">Culture</a></li>
+                    <li><a href="#">Shopping</a></li>
+                    <li><a href="#">Dancing</a></li>
+                    <li><a href="#">Live Music</a></li>
+                    <li><a href="#">Walks</a></li>
+                </ul>
+            </div>
             
-            <a id="profilesLink" href="#">Profiles</a>
+            <div class="profiles-box">
+                <a id="profilesLink" href="#">Profiles</a>
+                <div class="profiles-container collapse">
+                    <div class="profiles-expanded">
+                        Search<br>
+                        Profile<br>
+                        profile<br>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
@@ -149,6 +177,22 @@
                 }
                 
                 google.maps.event.addDomListener(window, 'load', initialize);
+                
+                $(function () {
+                    $("#profilesLink").click(function () {
+                        if (!$(".profiles-container").hasClass("in")) {
+                            var windowHeight = $(window).height();
+                            var boxTop = $(".profiles-box").offset().top;
+                            var boxHeight = $(".profiles-box").outerHeight();
+                            var newHeight = windowHeight - (boxTop + boxHeight);
+                            console.log("New height: ", newHeight + "px");
+                            $(".profiles-expanded").css("height", newHeight + "px");
+                        }
+                        
+                        $(".profiles-container").collapse("toggle");
+                    });
+                });
+                
         </script>
 
     </body>
