@@ -20,7 +20,11 @@ QuitoFrontend.Models = QuitoFrontend.Models || {};
 
         parse: function(response, options)  {
             return response;
-        }
+        },
+      latitude:null,
+      longitude:null,
+      title:null
+
     });
 
 })();

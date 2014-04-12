@@ -4,54 +4,38 @@
           zoom: 14,
           center: new google.maps.LatLng(41.382555, 2.163403)
       }
-      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-      var markers = [
-          {
-              latitude: 41.390412,
-              longitude: 2.157952,
-              title: 'Espito Chupitos'
-          },
-          {
-              latitude: 41.385244,
-              longitude: 2.169797,
-              title: "L'oveja Negra"
-          },
-          {
-              latitude: 41.382555,
-              longitude: 2.163403,
-              title: "Fabrica Moritz"
-          }
-      ];
-
-      for (var i=0;i<markers.length;i++)
-      {
-
-          var populationOptions = {
-              strokeColor: '#000',
-              strokeOpacity: 1,
-              strokeWeight: 1,
-              fillColor: '#35aeff',
-              fillOpacity: 1,
-              map: map,
-              center: new google.maps.LatLng(markers[i].latitude, markers[i].longitude),
-              radius: 100
-          };
-          // Add the circle for this city to the map.
-          var circle = new google.maps.Circle(populationOptions);
-
-          google.maps.event.addListener(circle, 'click', function() {
-              alert("hey");
-          });
-      }
-
+    QuitoFrontend.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
   }
 
-
-
   $('#happy').on('click', function (e) {
     console.log("click hello man.")
+
+//    var markers = [
+//      {
+//        latitude: 41.390412,
+//        longitude: 2.157952,
+//        title: 'Espito Chupitos'
+//      },
+//      {
+//        latitude: 41.385244,
+//        longitude: 2.169797,
+//        title: "L'oveja Negra"
+//      },
+//      {
+//        latitude: 41.382555,
+//        longitude: 2.163403,
+//        title: "Fabrica Moritz"
+//      }
+//    ];
+
+//    QuitoFrontend.markers = null;
+//    $.get( '/json/markers.json', function( data ) {
+//      alert( "Load was performed." );
+//      QuitoFrontend.markers = data;
+//    });
+
+    fetchMarker();
     var model = new QuitoFrontend.Models.Profile();
     model.set("name","Jorge")
     model.set("desc","He is a smart fella")
@@ -103,3 +87,42 @@
     QuitoFrontend.ProfileView = new QuitoFrontend.Views.ProfileView({selectedProfile:"Jorge", model:model});
     QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
   })
+
+  function fetchMarker() {
+    var jqxhr = $.get("/json/markers.json", function (data) {
+      console.log("success");
+      QuitoFrontend.markers = data
+      var markers = new QuitoFrontend.Collections.MarkerCollection(QuitoFrontend.markers)
+//    markers.fetch( {
+//      success: function(record){
+//        console.log("Fetched record: " + JSON.stringify(record));
+//      }})
+      for (var i = 0; i < markers.length; i++) {
+        var marker = markers.models[i]
+        var populationOptions = {
+          strokeColor: '#000',
+          strokeOpacity: 1,
+          strokeWeight: 1,
+          fillColor: '#35aeff',
+          fillOpacity: 1,
+          map: QuitoFrontend.map,
+          center: new google.maps.LatLng(marker.get("latitude"), marker.get("longitude")),
+          radius: 100
+        };
+        // Add the circle for this city to the map.
+        var circle = new google.maps.Circle(populationOptions);
+        google.maps.event.addListener(circle, 'click', function () {
+          alert("hey");
+        });
+      }
+    })
+      .done(function () {
+        console.log("second success");
+      })
+      .fail(function () {
+        console.log("error");
+      })
+      .always(function () {
+        console.log("finished");
+      });
+  }
