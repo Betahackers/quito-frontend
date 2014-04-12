@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
 body {
     background: #fafafa;
 }
@@ -27,3 +29,83 @@ body {
     padding: 10px;
     text-align: center;
 }
+
+/** PROFILE AREA **/
+
+.profile {
+
+    float: right;
+    width: 220px;
+    font-family: 'Montserrat-Regular', sans-serif;
+    background-color: rgb(53, 174, 255);
+    color: white;
+
+}
+
+.profile-header {
+    padding: 12px;
+}
+
+.profile-header > hr {
+    margin-top: 10px;
+    height: 1px;
+    background-color: rgb(174, 223, 255);
+    color: rgb(174, 223, 255);
+    border: 0px;
+}
+
+.profile-people-img {
+    float: left;
+}
+
+.profile-people-name {
+    font-family: 'Montserrat-Bold';
+    font-size: 14px;
+    padding-left: 50px;
+    padding-bottom: 5px;
+}
+
+.profile-people-text {
+    font-size: 12px;
+    padding-left: 50px;
+}
+
+.profile-description {
+    font-size: 11px;
+    padding: 0px 12px 15px 12px;
+}
+
+.profile-location, .profile-work {
+    width: 100%;
+    padding: 0px 12px;
+}
+
+.profile-location {
+    font-size: 10px;
+    font-family: "Montserrat-Bold";
+}
+
+.profile-work {
+    font-size: 10px;
+    padding-bottom: 20px;
+}
+
+.profile-picture {
+    height: 120px;
+}
+
+.profile-content {
+    background-color: rgb(174, 223, 255);
+    color: black;
+    padding: 15px 12px;
+    font-size: 11px;
+}
+
+.profile-content > h1 {
+    font-family: "Montserrat-Regular";
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+
+/** END PROFILE AREA **/
