@@ -12,6 +12,9 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/bootstrap.css">
+
+
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
@@ -27,6 +30,24 @@
         <div id="map-canvas">
         </div>
 
+        <div id="filter-container">
+            <a href="#" data-toggle="collapse" data-target="#moods">Mood</a>
+            <ul id="moods" class="collapse">
+                <li>Happy</li>
+                <li>In love</li>
+                <li>Sad</li>
+                <li>Anxious</li>
+                <li>We're never gonna make it!</li>
+            </ul>
+
+            <a href="#" data-toggle="collapse" data-target="#categories">Category</a>
+            <ul id="categories" class="collapse">
+                <li>Architecture</li>
+                <li>Nightlife</li>
+                <li>Restaurants</li>
+            </ul>
+
+        </div>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -47,6 +68,7 @@
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/main.js -->
+        <script src="scripts/vendor/bootstrap.js"></script>
         <script src="scripts/vendor/has.js"></script>
         <script src="scripts/vendor/url.js"></script>
         <script src="scripts/vendor/tween.js"></script>
@@ -58,6 +80,8 @@
         <!--<script src="scripts/utils.js"></script>-->
         <!--<script src="scripts/utils-tangerine.js"></script>-->
         <script src="scripts/App.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK2j29aS720hndwhtfi1wPPSWhxXqthfM&sensor=true"></script>
+        <script src="scripts/utils.js"></script>
         <script src="scripts/AppController.js"></script>
         <!--<script src="scripts/templates.js"></script>-->
         <!--<script src="scripts/main.js"></script>-->
@@ -71,7 +95,7 @@
         <script src="scripts/views/MapView.js"></script>
         <script src="scripts/views/ProfileView.js"></script>
         <script src="scripts/views/CategoryView.js"></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK2j29aS720hndwhtfi1wPPSWhxXqthfM&sensor=true"></script>
+
 
         <!-- endbuild -->
 </body>
