@@ -27,8 +27,10 @@ QuitoFrontend.Views = QuitoFrontend.Views || {};
       initializeMap()
     },
     showPanel: function(e) {
-      console.log("showing info panel.")
-      $('#info').show();
+      console.log("showing profile panel.")
+//      $('#info').show();
+      QuitoFrontend.ProfileView = new QuitoFrontend.Views.ProfileView();
+      QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
     }
 
   });

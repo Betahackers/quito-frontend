@@ -14,7 +14,8 @@ QuitoFrontend.Views = QuitoFrontend.Views || {};
 //    },
     helloworld: function() {
       console.log("ProfileView.")
-    }
+    },
+    selectedProfile: null
 
   });
 
