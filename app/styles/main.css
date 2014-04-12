@@ -38,7 +38,7 @@ body {
     font-family: 'Montserrat-Regular', sans-serif;
     background-color: rgb(53, 174, 255);
     color: white;
-
+    box-shadow: -1px 0px 10px 1px #aaaaaa;
 }
 
 .profile-header {
@@ -108,11 +108,7 @@ body {
 
 
 /** END PROFILE AREA **/
-    width: 500px;
-    font-size: 32px;
-    margin-bottom: 20px;
-    padding-left: 20px;
-}
+
 
 #filter-container>a:hover {
     text-decoration: none;
