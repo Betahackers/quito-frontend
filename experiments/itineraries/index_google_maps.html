@@ -16,12 +16,20 @@ $(document).ready(function(){
 	var container = document.getElementById('map');
 
 	var map = new google.maps.Map(container, {
-		zoom: 13,
+		zoom: 14,
 		center: new google.maps.LatLng(41.3897, 2.1699),
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		mapTypeControl: false,
 	    streetViewControl: false
 	});
+
+	var colors = new Array();
+	var color_number = 0;
+	colors[0] = "#FF0000";
+	colors[1] = "#00FF00";
+	colors[2] = "#0000FF";
+	colors[3] = "#FFFF00";
+
 
 	map.set('styles', [
 	{
@@ -127,6 +135,7 @@ $(document).ready(function(){
 	var infowindow = new google.maps.InfoWindow();
 
 	// var articles = articles.article;
+	var bounds = new google.maps.LatLngBounds();
 	for (var i = 0; i < articles[0].article.length; i++) {
 		var article = articles[0].article[i];
 		drawItinary(article);
@@ -139,8 +148,6 @@ $(document).ready(function(){
 		if(mapLocations.length == 0){
 			return;
 		}
-
-		var bounds = new google.maps.LatLngBounds();
 
 		var positions = [];
 
@@ -203,10 +210,11 @@ $(document).ready(function(){
 		var path = new google.maps.Polyline({
 			path: positions,
 			geodesic: true,
-			strokeColor: '#FF0000',
+			strokeColor: colors[color_number],
 			strokeOpacity: 1.0,
 			strokeWeight: 2
 		});
+		color_number = (color_number + 1) % 4;
 		path.setMap(map);
 
 		//drawItinaryLines(positions);
@@ -258,7 +266,8 @@ $(document).ready(function(){
 		var path = new google.maps.Polyline({
 			path: newPositions,
 			geodesic: true,
-			strokeColor: '#00FF00',
+			//strokeColor: color[2],
+			strokeColor: "#FFFF00",
 			strokeOpacity: 1.0,
 			strokeWeight: 2
 		});
