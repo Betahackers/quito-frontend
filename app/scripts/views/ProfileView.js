@@ -3,28 +3,19 @@
 QuitoFrontend.Views = QuitoFrontend.Views || {};
 
 (function () {
-    'use strict';
+  'use strict';
 
-    QuitoFrontend.Views.ProfileView = Backbone.View.extend({
+  QuitoFrontend.Views.ProfileView = Backbone.Marionette.ItemView.extend({
 
-        template: JST['app/scripts/templates/ProfileView.hbs'],
+    template: JST['app/scripts/templates/ProfileView.hbs'],
 
-        tagName: 'div',
+//    events: {
+//      "click #helloworld": "helloworld"
+//    },
+    helloworld: function() {
+      console.log("ProfileView.")
+    }
 
-        id: '',
-
-        className: '',
-
-        events: {},
-
-        initialize: function () {
-            this.listenTo(this.model, 'change', this.render);
-        },
-
-        render: function () {
-            this.$el.html(this.template(this.model.toJSON()));
-        }
-
-    });
+  });
 
 })();

@@ -12,11 +12,10 @@
   QuitoFrontend.Routers = {}
   QuitoFrontend.Layouts = {};
 
-
-  QuitoFrontend.init = function () {
-    'use strict';
-    console.log('Hello from Backbone Betafolk!');
-  }
+//  QuitoFrontend.init = function () {
+//    'use strict';
+//    console.log('Hello from Backbone Betafolk!');
+//  }
 
   //Organize Application into regions corresponding to DOM elements
   //Regions can contain views, Layouts, or subregions nested as necessary
@@ -28,12 +27,13 @@
 
   QuitoFrontend.addInitializer(function () {
 //    Backbone.history.start();
-    App.appRouter = new QuitoFrontend.Routers.AppRouter({
+    QuitoFrontend.appRouter = new QuitoFrontend.Routers.AppRouter({
       controller:new QuitoFrontend.AppController()
     });
   });
 
   QuitoFrontend.on("initialize:after", function(){
+    console.log('Hello from Backbone Betafolk!');
     if(Backbone.history){
       Backbone.history.start();
     }
@@ -52,9 +52,8 @@
 
 $(document).ready(function () {
   'use strict';
-  QuitoFrontend.init();
-  QuitoFrontend.HomeView = new QuitoFrontend.Views.HomeView();
-  QuitoFrontend.mainRegion.show(QuitoFrontend.HomeView)
+//  QuitoFrontend.init();
+  QuitoFrontend.start()
 //
 //  NeuronalSynchrony.Song = new NeuronalSynchrony.Collections.SongCollection;
 //  NeuronalSynchrony.SequencerLayout = new NeuronalSynchrony.Layouts.SequencerLayout();
