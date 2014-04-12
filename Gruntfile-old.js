@@ -11,7 +11,7 @@ var mountFolder = function (connect, dir) {
 // 'test/spec/{,*/}*.js'
 // use this if you want to match all subfolders:
 // 'test/spec/**/*.js'
-// templateFramework: 'handlebars'
+// templateFramework: 'lodash'
 
 module.exports = function (grunt) {
     // show elapsed time at the end
@@ -45,11 +45,11 @@ module.exports = function (grunt) {
                     'test/spec/**/*.js'
                 ]
             },
-            handlebars: {
+            jst: {
                 files: [
-                    '<%= yeoman.app %>/scripts/templates/*.hbs'
+                    '<%= yeoman.app %>/scripts/templates/*.ejs'
                 ],
-                tasks: ['handlebars']
+                tasks: ['jst']
             },
             test: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/**/*.js'],
@@ -204,16 +204,23 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        handlebars: {
-            compile: {
-                options: {
-                    namespace: 'JST'
-                },
-                files: {
-                    '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/*.hbs']
-                }
-            }
-        },
+//        jst: {
+//            compile: {
+//                files: {
+//                    '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/*.ejs']
+//                }
+//            }
+//        },
+      handlebars: {
+        compile: {
+          options: {
+            namespace: 'JST'
+          },
+          files: {
+            '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/*.hbs']
+          }
+        }
+      },
         rev: {
             dist: {
                 files: {
@@ -246,7 +253,7 @@ module.exports = function (grunt) {
             return grunt.task.run([
                 'clean:server',
                 'createDefaultTemplate',
-                'handlebars',
+                'jst',
                 'connect:test',
                 'open:test',
                 'watch:livereload'
@@ -256,7 +263,7 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:server',
             'createDefaultTemplate',
-            'handlebars',
+            'jst',
             'connect:livereload',
             'open:server',
             'watch:livereload'
@@ -268,7 +275,7 @@ module.exports = function (grunt) {
         var testTasks = [
                 'clean:server',
                 'createDefaultTemplate',
-                'handlebars',
+                'jst',
                 'connect:test',
                 'mocha',
                 'watch:test'
@@ -286,7 +293,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'createDefaultTemplate',
-        'handlebars',
+        'jst',
         'useminPrepare',
         'imagemin',
         'htmlmin',
