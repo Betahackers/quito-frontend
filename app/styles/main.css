@@ -36,11 +36,11 @@ body {
     left: 0;
     top: 100px;
     font-size: 14px;
+    z-index: 10;
 }
 
 #filter-container a {
     color: white;
-    z-index: 10;
 }
 
 #filter-container a:hover {
