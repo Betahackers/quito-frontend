@@ -135,21 +135,27 @@
           var articleList = []
           var articles = this.marker.articles;
 
-          QuitoFrontend.ArticleList = new QuitoFrontend.Collections.ArticleCollection()
-          QuitoFrontend.ArticleList.fetch (
-            {
-              success: function(collection, response, options) {
-                console.log("item count: " + collection.length);
-//                QuitoFrontend.ProfileListView = new QuitoFrontend.Views.ProfileListView({collection:QuitoFrontend.ProfileList,itemView : QuitoFrontend.Views.ProfileItemView});
-//                QuitoFrontend.profileListRegion.show(QuitoFrontend.ProfileListView)
-//                var model = new QuitoFrontend.Models.Profile({url:"http://127.0.0.1:9292/www.fromto.es/v1/locations/1.json"});
-                var model = new QuitoFrontend.Models.Profile();
+//          QuitoFrontend.ArticleList = new QuitoFrontend.Collections.ArticleCollection()
+//          QuitoFrontend.ArticleList.fetch (
+//            {
+//              success: function(collection, response, options) {
+//                console.log("item count: " + collection.length);
+////                QuitoFrontend.ProfileListView = new QuitoFrontend.Views.ProfileListView({collection:QuitoFrontend.ProfileList,itemView : QuitoFrontend.Views.ProfileItemView});
+////                QuitoFrontend.profileListRegion.show(QuitoFrontend.ProfileListView)
+////                var model = new QuitoFrontend.Models.Profile({url:"http://127.0.0.1:9292/www.fromto.es/v1/locations/1.json"});
+//                var model = new QuitoFrontend.Models.Profile();
+////                model.set("name",this.marker.name)
+//                model.set("articles",QuitoFrontend.ArticleList)
+//                model.set("desc","Dancing about Architecture")
+//                displayProfileView(model)
+//              }}
+//          )
+
+          var model = new QuitoFrontend.Models.Profile();
 //                model.set("name",this.marker.name)
-                model.set("articles",QuitoFrontend.ArticleList)
-                model.set("desc","Dancing about Architecture")
-                displayProfileView(model)
-              }}
-          )
+          model.set("articles",articles)
+          model.set("desc","Dancing about Architecture")
+          displayProfileView(model)
 
 
 //          for (var i = 0; i < articles.length; i++) {
