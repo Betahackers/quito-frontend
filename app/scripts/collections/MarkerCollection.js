@@ -14,9 +14,8 @@ QuitoFrontend.Collections = QuitoFrontend.Collections || {};
     },
 
     parse:function(results) {
-//      return _.pluck(results, 'value');
-      var markers = results.get("results.articles");
-      return _.pluck(markers, 'locations');
+      var markers = results.get("results.locations");
+      return markers;
     }
   });
 

@@ -78,16 +78,18 @@
   });
 
   function fetchMarker(markerType) {
-    var jqxhr = $.get("http://127.0.0.1:9292/www.fromto.es/v1/articles.json", function (data) {
+    var jqxhr = $.get("http://127.0.0.1:9292/rawgit.com/Betahackers/quito-backend/master/examples/locations.json", function (data) {
       console.log("success");
       QuitoFrontend.markers = data
-      var markers = new QuitoFrontend.Collections.MarkerCollection(QuitoFrontend.markers)
+      //var markers = new QuitoFrontend.Collections.MarkerCollection(QuitoFrontend.markers)
+      var markers = data.locations;
 //    markers.fetch( {
 //      success: function(record){
 //        console.log("Fetched record: " + JSON.stringify(record));
 //      }})
       for (var i = 0; i < markers.length; i++) {
-        var marker = markers.models[i]
+//        var marker = markers.models[i]
+        var marker = markers[i].location
         var populationOptions = {
           strokeColor: '#000',
           strokeOpacity: 1,
@@ -95,7 +97,8 @@
           fillColor: '#35aeff',
           fillOpacity: 1,
           map: QuitoFrontend.map,
-          center: new google.maps.LatLng(marker.get("latitude"), marker.get("longitude")),
+//          center: new google.maps.LatLng(marker.get("latitude"), marker.get("longitude")),
+          center: new google.maps.LatLng(marker.latitude, marker.longitude),
           radius: 100
         };
         // Add the circle for this city to the map.
