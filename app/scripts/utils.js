@@ -98,7 +98,7 @@
   });
 
   function fetchMarker(markerType, type) {
-    var url = "http://127.0.0.1:9292/www.fromto.es/v1/locations.json?"+type+"=" + markerType
+    var url = "http://127.0.0.1:9292/www.fromto.es/v1/locations.json?"+type+"=" + markerType + "&include_articles=true"
     var jqxhr = $.get(url, function (data) {
       console.log("success");
       QuitoFrontend.markers = data

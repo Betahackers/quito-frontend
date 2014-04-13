@@ -11,7 +11,8 @@ QuitoFrontend.Collections = QuitoFrontend.Collections || {};
       url:"http://127.0.0.1:9292/www.fromto.es/v1/articles.json",
       parse:function(results) {
         var result = results.articles;
-        return result.article;
+        var article = _.pluck(result, 'article');
+        return  article;
       }
 
     });
