@@ -118,6 +118,7 @@ body {
     background-color: rgb(53, 174, 255);
     color: white;
     box-shadow: -1px 0px 10px 1px #aaaaaa;
+    min-height: 100%
 }
 
 .profile-header {
@@ -184,6 +185,10 @@ body {
     color: black;
     padding: 15px 12px;
     font-size: 11px;
+        width: 220px;
+	position: absolute;
+height: 100%;
+
 }
 
 .profile-content > h1 {
