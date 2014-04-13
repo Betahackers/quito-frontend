@@ -104,10 +104,11 @@
         };
         // Add the circle for this city to the map.
         var circle = new google.maps.Circle(populationOptions);
+        circle.marker = marker
         google.maps.event.addListener(circle, 'click', function () {
           console.log("hey");
           var model = new QuitoFrontend.Models.Profile();
-          model.set("name",marker.name)
+          model.set("name",this.marker.name)
           model.set("desc","Dancing about Architecture")
           displayProfileView(model)
         });
