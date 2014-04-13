@@ -10,7 +10,11 @@ QuitoFrontend.Views = QuitoFrontend.Views || {};
     tagName: "ul",
     template: JST['app/scripts/templates/ProfileListView.hbs'],
     itemView : QuitoFrontend.Views.ProfileItemView,
-    itemViewContainer : '#shortProfiles'
+    itemViewContainer : '#shortProfiles',
+//    events : {
+//      'click .profileItem' : 'displayItem'
+//    },
+
 
   });
 
