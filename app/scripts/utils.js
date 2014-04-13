@@ -16,55 +16,74 @@
     QuitoFrontend.map.setMapTypeId('maptype');
   }
 
-  $('#happy').on('click', function (e) {
-    console.log("click hello man.")
-    fetchMarker("happy");
+  $('#Illegal').on('click', function (e) {
+    console.log("click Illegal man.")
+    fetchMarker("Illegal");
+  })
+  $('#Sociable').on('click', function (e) {
+    console.log("click Sociable man.")
+    fetchMarker("Sociable");
+  })
+  $('#Adventure').on('click', function (e) {
+    console.log("click Adventure man.")
+    fetchMarker("Adventure");
+  })
+  $('#Active').on('click', function (e) {
+    console.log("click Active man.")
+    fetchMarker("Active");
+  })
+  $('#Cultural').on('click', function (e) {
+    console.log("click Cultural man.")
+    fetchMarker("Cultural");
+  })
+  $('#Romantic').on('click', function (e) {
+    console.log("click Romantic man.")
+    fetchMarker("Romantic");
+  })
+  $('#Relaxed').on('click', function (e) {
+    console.log("click Relaxed man.")
+    fetchMarker("Relaxed");
+  })
+  $('#Solitary').on('click', function (e) {
+    console.log("click Solitary man.")
+    fetchMarker("Solitary");
   })
 
-  $('#love').on('click', function (e) {
-    console.log("click love man.")
-    var model = new QuitoFrontend.Models.Profile();
-    model.set("name","Lover")
-    model.set("desc","He is a lovely fella")
-    QuitoFrontend.ProfileView = new QuitoFrontend.Views.ProfileView({selectedProfile:"Jorge", model:model});
-    QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
+//  {"categories":["Eat","Drink","Healthy Life","Culture","Shopping","Dancing","Live Music","Walks"],
+
+  $('#Eat').on('click', function (e) {
+    console.log("click Eat man.")
+    fetchMarker("Eat");
+  })
+  $('#Drink').on('click', function (e) {
+    console.log("click Drink man.")
+    fetchMarker("Drink");
+  })
+  $('#HealthyLife').on('click', function (e) {
+    console.log("click Healthy Life man.")
+    fetchMarker("Healthy Life");
+  })
+  $('#Culture').on('click', function (e) {
+    console.log("click Culture man.")
+    fetchMarker("Culture");
+  })
+  $('#Shopping').on('click', function (e) {
+    console.log("click Shopping man.")
+    fetchMarker("Shopping");
+  })
+  $('#Dancing').on('click', function (e) {
+    console.log("click Dancing man.")
+    fetchMarker("Dancing");
+  })
+  $('#LiveMusic').on('click', function (e) {
+    console.log("click Live Music man.")
+    fetchMarker("Live Music");
+  })
+  $('#Walks').on('click', function (e) {
+    console.log("click Walks man.")
+    fetchMarker("Walks");
   })
 
-  $('#sad').on('click', function (e) {
-    console.log("click sad man.")
-    var model = new QuitoFrontend.Models.Profile();
-    model.set("name","Saddy")
-    model.set("desc","He is a sad fella")
-    QuitoFrontend.ProfileView = new QuitoFrontend.Views.ProfileView({selectedProfile:"Jorge", model:model});
-    QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
-  })
-
-  $('#anx').on('click', function (e) {
-    console.log("click anx man.")
-    var model = new QuitoFrontend.Models.Profile();
-    model.set("name","Anxious")
-    model.set("desc","He is an anxious fella")
-    QuitoFrontend.ProfileView = new QuitoFrontend.Views.ProfileView({selectedProfile:"Jorge", model:model});
-    QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
-  })
-
-  $('#despair').on('click', function (e) {
-    console.log("click desparate man.")
-    var model = new QuitoFrontend.Models.Profile();
-    model.set("name","Despair")
-    model.set("desc","He is a desperate fella")
-    QuitoFrontend.ProfileView = new QuitoFrontend.Views.ProfileView({selectedProfile:"Jorge", model:model});
-    QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
-  })
-
-  $('#arch').on('click', function (e) {
-    console.log("click arch man.")
-    var model = new QuitoFrontend.Models.Profile();
-    model.set("name","Architecture")
-    model.set("desc","Dancing about Architecture")
-    QuitoFrontend.ProfileView = new QuitoFrontend.Views.ProfileView({selectedProfile:"Jorge", model:model});
-    QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
-  })
 
   $("#profilesLink").click(function () {
     if (!$(".profiles-container").hasClass("in")) {
@@ -79,7 +98,8 @@
   });
 
   function fetchMarker(markerType) {
-    var jqxhr = $.get("http://127.0.0.1:9292/www.fromto.es/v1/locations.json", function (data) {
+    var url = "http://127.0.0.1:9292/www.fromto.es/v1/locations.json?mood=" + markerType
+    var jqxhr = $.get(url, function (data) {
       console.log("success");
       QuitoFrontend.markers = data
       //var markers = new QuitoFrontend.Collections.MarkerCollection(QuitoFrontend.markers)
@@ -112,16 +132,17 @@
           var articleList = []
           var articles = this.marker.articles;
 
-          QuitoFrontend.ArticleList = new QuitoFrontend.Collections.ArticleCollection({url:"http://www.fromto.es/v1/locations/1.json"})
+          QuitoFrontend.ArticleList = new QuitoFrontend.Collections.ArticleCollection()
           QuitoFrontend.ArticleList.fetch (
             {
               success: function(collection, response, options) {
                 console.log("item count: " + collection.length);
 //                QuitoFrontend.ProfileListView = new QuitoFrontend.Views.ProfileListView({collection:QuitoFrontend.ProfileList,itemView : QuitoFrontend.Views.ProfileItemView});
 //                QuitoFrontend.profileListRegion.show(QuitoFrontend.ProfileListView)
-                var model = new QuitoFrontend.Models.Profile({url:"http://www.fromto.es/v1/locations/1.json"});
-                model.set("name",this.marker.name)
-                model.set("articles",articleList)
+//                var model = new QuitoFrontend.Models.Profile({url:"http://127.0.0.1:9292/www.fromto.es/v1/locations/1.json"});
+                var model = new QuitoFrontend.Models.Profile();
+//                model.set("name",this.marker.name)
+                model.set("articles",QuitoFrontend.ArticleList)
                 model.set("desc","Dancing about Architecture")
                 displayProfileView(model)
               }}
