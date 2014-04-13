@@ -79,7 +79,7 @@
   });
 
   function fetchMarker(markerType) {
-    var jqxhr = $.get("http://127.0.0.1:9292/rawgit.com/Betahackers/quito-backend/master/examples/locations.json", function (data) {
+    var jqxhr = $.get("http://127.0.0.1:9292/www.fromto.es/v1/locations.json", function (data) {
       console.log("success");
       QuitoFrontend.markers = data
       //var markers = new QuitoFrontend.Collections.MarkerCollection(QuitoFrontend.markers)
