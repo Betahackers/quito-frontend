@@ -144,7 +144,8 @@
             model.set("firstName",data.article.user.first_name)
             model.set("lastName",data.article.user.last_name)
             model.set("article",data.article)
-            model.set("desc","Dancing about Architecture")
+            model.set("moods",data.article.moods)
+//            model.set("desc","Dancing about Architecture")
             displayProfileView(model)
 
           })
