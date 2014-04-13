@@ -98,7 +98,7 @@
   });
 
   function fetchMarker(markerType, type) {
-    var url = "http://" + QuitoFrontend.DevProxy + "www.fromto.es/v1/locations.json?"+type+"=" + markerType + "&include_articles=true"
+    var url = "http://" + Config.DevProxy + "www.fromto.es/v1/locations.json?"+type+"=" + markerType + "&include_articles=true"
     var jqxhr = $.get(url, function (data) {
       console.log("success");
       QuitoFrontend.markers = data
@@ -136,7 +136,7 @@
           var articles = this.marker.articles;
           var article = this.marker.articles[0]
           var articleId = article.id;
-          url = "http://" + QuitoFrontend.DevProxy + "www.fromto.es/v1/articles/" + articleId + ".json"
+          url = "http://" + Config.DevProxy + "www.fromto.es/v1/articles/" + articleId + ".json"
           var jqxhr = $.get(url, function (data) {
             console.log("success");
 

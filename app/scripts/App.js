@@ -7,7 +7,6 @@
 
   window.QuitoFrontend = new Backbone.Marionette.Application();
 
-  QuitoFrontend.DevProxy = "127.0.0.1:9292/";
 
   QuitoFrontend.Models = {}
   QuitoFrontend.Collections = {}

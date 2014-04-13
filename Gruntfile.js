@@ -135,7 +135,7 @@ module.exports = function (grunt) {
             dist: {}
         },*/
         useminPrepare: {
-            html: '<%= yeoman.app %>/index.html',
+            html: '<%= yeoman.app %>/app.html',
             options: {
                 dest: '<%= yeoman.dist %>'
             }
@@ -147,16 +147,16 @@ module.exports = function (grunt) {
                 dirs: ['<%= yeoman.dist %>']
             }
         },
-        imagemin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= yeoman.app %>/images',
-                    src: '{,*/}*.{png,jpg,jpeg}',
-                    dest: '<%= yeoman.dist %>/images'
-                }]
-            }
-        },
+//        imagemin: {
+//            dist: {
+//                files: [{
+//                    expand: true,
+//                    cwd: '<%= yeoman.app %>/images',
+//                    src: '{,*/}*.{png,jpg,jpeg}',
+//                    dest: '<%= yeoman.dist %>/images'
+//                }]
+//            }
+//        },
         cssmin: {
             dist: {
                 files: {
@@ -200,6 +200,10 @@ module.exports = function (grunt) {
                         '.htaccess',
                         'images/{,*/}*.{webp,gif}',
                         'styles/fonts/{,*/}*.*',
+                      'marker-images/{,*/}*.*',
+                      'mood_images/{,*/}*.*',
+                      'splash_images/{,*/}*.*',
+                      'fromto.png'
                     ]
                 }]
             }
@@ -220,7 +224,7 @@ module.exports = function (grunt) {
                     src: [
                         '<%= yeoman.dist %>/scripts/{,*/}*.js',
                         '<%= yeoman.dist %>/styles/{,*/}*.css',
-                        '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
+//                        '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
                         '/styles/fonts/{,*/}*.*',
                     ]
                 }
@@ -288,11 +292,11 @@ module.exports = function (grunt) {
         'createDefaultTemplate',
         'handlebars',
         'useminPrepare',
-        'imagemin',
+//        'imagemin',
         'htmlmin',
         'concat',
         'cssmin',
-        'uglify',
+//        'uglify',
         'copy',
         'rev',
         'usemin'
