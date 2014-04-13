@@ -52,18 +52,24 @@
                 text-decoration: none;
             }
 
-            .filter-box {
+            .sidebar-box {
                 display: block;
-                color: white;
                 width: 150px;
                 font-size: 18px;
-                margin-bottom: 10px;
-                padding-left: 20px;
-                padding-right: 20px;
+                padding-left: 4px;
+                padding-right: 4px;
                 padding-top: 7px;
                 padding-bottom: 7px;
                 box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.25);
                 border-radius: 0 2px 2px 0;
+            }
+
+            .filter-box {
+                margin-bottom: 10px;
+            }
+            
+            .sidebar-box>a {
+                padding-left: 20px;
             }
             
             .filter-box ul {
@@ -75,7 +81,7 @@
                 line-height: 2;
                 margin-top: 10px;
                 padding-top: 9px;
-                padding-left: 10px;
+                padding-left: 16px;
             }
             
             .filter-moods {
@@ -88,19 +94,29 @@
             
             .profiles-box {
                 background-color: rgba(59, 174, 251, 1);
-
-                display: block;
+            }
+            
+            .profiles-expanded {
+                overflow-y: scroll;
+                padding-left: 5px;
+                font-size: 14px;
+                line-height: 2;
+            }
+            
+            .profile-search {
+                background: rgba(0, 0, 0, 0);
                 color: white;
-                width: 150px;
-                font-size: 18px;
-                margin-bottom: 10px;
-                padding-left: 20px;
-                padding-top: 7px;
-                padding-bottom: 7px;
-                box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.25);
-                border-radius: 0 2px 2px 0;
+                border-top: 1px solid white;
+                border-bottom: 1px solid white;
+                border-left: 0;
+                border-right: 0;
+                margin-top: 5px;
             }
 
+            .profiles-expanded ul {
+                list-style: none;
+            }
+            
         </style>
         
     </head>
@@ -113,38 +129,42 @@
         </div>
         
         <div id="filter-container">
-            <div class="filter-box filter-moods">
+            <div class="sidebar-box filter-box filter-moods">
                 <a id="moodsDropdown" href="#" data-toggle="collapse" data-target="#moods">Mood</a>
-                <ul id="moods" class="collapse">
-                    <li><a href="#">Happy</a></li>
-                    <li><a href="#">In love</a></li>
-                    <li><a href="#">Sad</a></li>
-                    <li><a href="#">Panicking</a></li>
-                </ul>
+                <div id="moods" class="collapse">
+                    <ul>
+                        <li><a href="#">Happy</a></li>
+                        <li><a href="#">In love</a></li>
+                        <li><a href="#">Sad</a></li>
+                        <li><a href="#">Panicking</a></li>
+                    </ul>
+                </div>
             </div>
             
-            <div class="filter-box filter-categories">
+            <div class="sidebar-box filter-box filter-categories">
                 <a id="categoriesDropdown" href="#" data-toggle="collapse" data-target="#categories">Category</a>
-                <ul id="categories" class="collapse">
-
-                    <li><a href="#">Eat</a></li>
-                    <li><a href="#">Drink</a></li>
-                    <li><a href="#">Healthy Life</a></li>
-                    <li><a href="#">Culture</a></li>
-                    <li><a href="#">Shopping</a></li>
-                    <li><a href="#">Dancing</a></li>
-                    <li><a href="#">Live Music</a></li>
-                    <li><a href="#">Walks</a></li>
-                </ul>
+                <div id="categories" class="collapse">
+                    <ul>
+                        <li><a href="#">Eat</a></li>
+                        <li><a href="#">Drink</a></li>
+                        <li><a href="#">Healthy Life</a></li>
+                        <li><a href="#">Culture</a></li>
+                        <li><a href="#">Shopping</a></li>
+                        <li><a href="#">Dancing</a></li>
+                        <li><a href="#">Live Music</a></li>
+                        <li><a href="#">Walks</a></li>
+                    </ul>
+                </div>
             </div>
             
-            <div class="profiles-box">
-                <a id="profilesLink" href="#">Profiles</a>
+            <div class="sidebar-box profiles-box">
+                <a id="profilesLink" href="javascript:void(0)">Profiles</a>
                 <div class="profiles-container collapse">
                     <div class="profiles-expanded">
-                        Search<br>
-                        Profile<br>
-                        profile<br>
+                        <input class="profile-search" type="text" placeholder="Search...">
+                        <ul>
+                            <li>John</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -185,7 +205,6 @@
                             var boxTop = $(".profiles-box").offset().top;
                             var boxHeight = $(".profiles-box").outerHeight();
                             var newHeight = windowHeight - (boxTop + boxHeight);
-                            console.log("New height: ", newHeight + "px");
                             $(".profiles-expanded").css("height", newHeight + "px");
                         }
                         
