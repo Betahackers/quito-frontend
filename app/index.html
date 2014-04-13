@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>QuitoFrontend</title>
+        <title>Fromto</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -37,7 +37,7 @@
         <div id="filter-container">
             <div class="sidebar-box filter-box filter-moods">
                 <a id="moodsDropdown" href="#" data-toggle="collapse" data-target="#moods">Moods</a>
-                <div id="moods" class="collapse">
+                <div id="moodList" class="collapse">
                     <ul>
                         <li id="Illegal"><a href="#">Illegal</a></li>
                         <li id="Sociable"><a href="#">Sociable</a></li>
@@ -72,28 +72,18 @@
                 <div class="profiles-container collapse">
                     <div id="profilesList" class="profiles-expanded">
                         <input class="profile-search" type="text" placeholder="Search...">
-                        <!--<ul>-->
-                            <!--<li>-->
-                                <!--<a href="#">-->
-                                    <!--<img src="http://www.gravatar.com/avatar/159affceae523b0a5347a6392643bd06?d=identicon" alt="User Avatar" class="img-circle profile-avatar-tiny">-->
-                                    <!--Kristian Dupont-->
-                                <!--</a>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                                <!--<a href="#">-->
-                                    <!--<img src="http://www.gravatar.com/avatar/159affceae523b0a5347a6392643bd06?d=identicon" alt="User Avatar" class="img-circle profile-avatar-tiny">-->
-                                    <!--Kristian Dupont-->
-                                <!--</a>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                                <!--<a href="#">-->
-                                    <!--<img src="http://www.gravatar.com/avatar/159affceae523b0a5347a6392643bd06?d=identicon" alt="User Avatar" class="img-circle profile-avatar-tiny">-->
-                                    <!--Kristian Dupont-->
-                                <!--</a>-->
-                            <!--</li>-->
-                        <!--</ul>-->
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div id="about-button">
+            <a href="#" data-toggle="modal" data-target="#about-dialog">About</a>
+        </div>
+        
+        <div id="about-dialog" class="modal custom fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="about-container">
+                <canvas id='about-canvas' width='800' height='300'>Your browser does not support the Canvas element.</canvas>
             </div>
         </div>
 
@@ -130,6 +120,7 @@
         <script src="scripts/App.js"></script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK2j29aS720hndwhtfi1wPPSWhxXqthfM&sensor=true"></script>
         <script src="scripts/utils.js"></script>
+        <script src="scripts/aboutbox.js"></script>
         <script src="scripts/AppController.js"></script>
         <!--<script src="scripts/templates.js"></script>-->
         <!--<script src="scripts/main.js"></script>-->
@@ -138,6 +129,7 @@
         <script src="scripts/routers/AppRouter.js"></script>
         <script src="scripts/views/ProfileView.js"></script>
         <script src="scripts/collections/ProfileCollection.js"></script>
+        <script src="scripts/collections/MoodCollection.js"></script>
         <script src="scripts/models/Home.js"></script>
         <script src="scripts/views/HomeView.js"></script>
         <script src="scripts/views/MapView.js"></script>
@@ -145,6 +137,8 @@
         <script src="scripts/views/CategoryView.js"></script>
         <script src="scripts/views/ProfileListView.js"></script>
         <script src="scripts/views/ProfileItemView.js"></script>
+        <script src="scripts/views/MoodListView.js"></script>
+        <script src="scripts/views/MoodItemView.js"></script>
         <script src="scripts/collections/MarkerCollection.js"></script>
         <script src="scripts/collections/ArticleCollection.js"></script>
         <script src="scripts/models/Marker.js"></script>

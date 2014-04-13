@@ -36,6 +36,7 @@ body {
     left: 0;
     top: 100px;
     font-size: 14px;
+    z-index: 10;
 }
 
 #filter-container a {
@@ -79,7 +80,8 @@ body {
 }
 
 .filter-moods {
-    background-color: rgba(85, 197, 192, 1);
+/*    background-color: rgba(85, 197, 192, 1);*/
+    background-color: #49c4c1;
 }
 
 .filter-categories {
@@ -125,6 +127,32 @@ body {
     width: 28px;
 }
 
+#about-button {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    width: 82px;
+    padding-left: 20px;
+    bottom: 30px;
+    opacity: 0.7;
+    background-color: #333;
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.25);
+    border-radius: 0 2px 2px 0;   
+}
+
+#about-button a {
+    color: white;
+    font-size: 12px;
+}
+
+.about-container {
+    width: 800px;
+    height: 300px;
+    margin: auto;
+    margin-top: 150px;
+}
+
+
 /** PROFILE AREA **/
 
 .profile {
@@ -134,7 +162,7 @@ body {
     right: 0;
     width: 220px;
     height: 100vh;
-    background-color: rgb(53, 174, 255);
+    background-color: rgba(85, 197, 192, 1);
     color: white;
     box-shadow: -1px 0px 10px 1px #aaaaaa;
 
@@ -156,8 +184,8 @@ body {
 .profile-header > hr {
     margin-top: 10px;
     height: 1px;
-    background-color: rgb(174, 223, 255);
-    color: rgb(174, 223, 255);
+    background-color: white;
+    opacity: 0.5;
     border: 0px;
 }
 
@@ -209,7 +237,7 @@ body {
 }
 
 .profile-content {
-    background-color: rgb(174, 223, 255);
+    background-color: #66e7e6;
     color: black;
     padding: 15px 12px;
     font-size: 11px;
@@ -224,23 +252,3 @@ body {
     text-transform: uppercase;
 }
 
-
-/** END PROFILE AREA **/
-
-
-/*#filter-container>a:hover {*/
-    /*text-decoration: none;*/
-/*}*/
-
-/*#filter-container>ul {*/
-    /*list-style: none;*/
-    /*background-color: #f08080;*/
-    /*padding-left: 0;*/
-    /*font-size: 32px;*/
-    /*color: white;*/
-    /*padding-left: 20px;*/
-/*}*/
-
-/*#filter-container li {*/
-    /*margin-bottom: 5px;*/
-/*}*/
