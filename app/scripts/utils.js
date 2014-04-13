@@ -98,7 +98,7 @@
   });
 
   function fetchMarker(markerType, type) {
-    var url = "http://127.0.0.1:9292/www.fromto.es/v1/locations.json?"+type+"=" + markerType + "&include_articles=true"
+    var url = "http://" + QuitoFrontend.DevProxy + "www.fromto.es/v1/locations.json?"+type+"=" + markerType + "&include_articles=true"
     var jqxhr = $.get(url, function (data) {
       console.log("success");
       QuitoFrontend.markers = data
@@ -136,7 +136,7 @@
           var articles = this.marker.articles;
           var article = this.marker.articles[0]
           var articleId = article.id;
-          url = "http://127.0.0.1:9292/www.fromto.es/v1/articles/" + articleId + ".json"
+          url = "http://" + QuitoFrontend.DevProxy + "www.fromto.es/v1/articles/" + articleId + ".json"
           var jqxhr = $.get(url, function (data) {
             console.log("success");
 
@@ -158,7 +158,7 @@
 //                console.log("item count: " + collection.length);
 ////                QuitoFrontend.ProfileListView = new QuitoFrontend.Views.ProfileListView({collection:QuitoFrontend.ProfileList,itemView : QuitoFrontend.Views.ProfileItemView});
 ////                QuitoFrontend.profileListRegion.show(QuitoFrontend.ProfileListView)
-////                var model = new QuitoFrontend.Models.Profile({url:"http://127.0.0.1:9292/www.fromto.es/v1/locations/1.json"});
+////                var model = new QuitoFrontend.Models.Profile({url:"http://QuitoFrontendwww.fromto.es/v1/locations/1.json"});
 //                var model = new QuitoFrontend.Models.Profile();
 ////                model.set("name",this.marker.name)
 //                model.set("articles",QuitoFrontend.ArticleList)
@@ -171,7 +171,7 @@
 //          for (var i = 0; i < articles.length; i++) {
 //            var article = article[i];
 //            var articleId = article
-//            var jqxhr = $.get("http://127.0.0.1:9292/www.fromto.es/v1/locations.json", function (data) {
+//            var jqxhr = $.get("http://QuitoFrontendwww.fromto.es/v1/locations.json", function (data) {
 //
 //              var model = new QuitoFrontend.Models.Profile({url:"http://www.fromto.es/v1/locations/1.json"});
 //              model.set("name",this.marker.name)
