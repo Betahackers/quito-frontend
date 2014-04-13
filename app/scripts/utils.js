@@ -106,7 +106,7 @@
         google.maps.event.addListener(circle, 'click', function () {
           console.log("hey");
           var model = new QuitoFrontend.Models.Profile();
-          model.set("name","Architecture")
+          model.set("name",marker.name)
           model.set("desc","Dancing about Architecture")
           displayProfileView(model)
         });
