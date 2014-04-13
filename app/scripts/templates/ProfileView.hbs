@@ -5,6 +5,8 @@
 		</div>
 		<div class="profile-people-name">
 			{{name}}
+			{{first_name}}
+			{{last_name}}
 		</div>
 		<div class="profile-people-text">
       {{desc}}
@@ -24,9 +26,14 @@
 		<img class="image" src="http://placehold.it/220x120" />
 	</div>
 	<div class="profile-content">
-		<h1>Parc Güell</h1>
-		<p>
-			Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-		</p>
+		<!--<h1>Parc Güell</h1>-->
+		<!--<p>-->
+			<!--Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.-->
+		<!--</p>-->
+    {{#each articles}}
+        <li>{{title}}</li>
+        <h1>{{content}}</h1>
+    {{/each}}
+
 	</div>
 </div>

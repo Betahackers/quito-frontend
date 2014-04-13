@@ -79,7 +79,7 @@
   });
 
   function fetchMarker(markerType) {
-    var jqxhr = $.get("http://127.0.0.1:9292/rawgit.com/Betahackers/quito-backend/master/examples/locations.json", function (data) {
+    var jqxhr = $.get("http://127.0.0.1:9292/www.fromto.es/v1/locations.json", function (data) {
       console.log("success");
       QuitoFrontend.markers = data
       //var markers = new QuitoFrontend.Collections.MarkerCollection(QuitoFrontend.markers)
@@ -107,10 +107,42 @@
         circle.marker = marker
         google.maps.event.addListener(circle, 'click', function () {
           console.log("hey");
-          var model = new QuitoFrontend.Models.Profile();
-          model.set("name",this.marker.name)
-          model.set("desc","Dancing about Architecture")
-          displayProfileView(model)
+          // http://www.fromto.es/v1/articles/1.json
+          // http://www.fromto.es/v1/locations/1.json
+          var articleList = []
+          var articles = this.marker.articles;
+
+          QuitoFrontend.ArticleList = new QuitoFrontend.Collections.ArticleCollection({url:"http://www.fromto.es/v1/locations/1.json"})
+          QuitoFrontend.ArticleList.fetch (
+            {
+              success: function(collection, response, options) {
+                console.log("item count: " + collection.length);
+//                QuitoFrontend.ProfileListView = new QuitoFrontend.Views.ProfileListView({collection:QuitoFrontend.ProfileList,itemView : QuitoFrontend.Views.ProfileItemView});
+//                QuitoFrontend.profileListRegion.show(QuitoFrontend.ProfileListView)
+                var model = new QuitoFrontend.Models.Profile({url:"http://www.fromto.es/v1/locations/1.json"});
+                model.set("name",this.marker.name)
+                model.set("articles",articleList)
+                model.set("desc","Dancing about Architecture")
+                displayProfileView(model)
+              }}
+          )
+
+
+//          for (var i = 0; i < articles.length; i++) {
+//            var article = article[i];
+//            var articleId = article
+//            var jqxhr = $.get("http://127.0.0.1:9292/www.fromto.es/v1/locations.json", function (data) {
+//
+//              var model = new QuitoFrontend.Models.Profile({url:"http://www.fromto.es/v1/locations/1.json"});
+//              model.set("name",this.marker.name)
+//              model.set("articles",articleList)
+//              model.set("desc","Dancing about Architecture")
+//              displayProfileView(model)
+//
+//            })
+//          }
+
+
         });
       }
     }
@@ -130,6 +162,40 @@
 
     QuitoFrontend.ProfileView = new QuitoFrontend.Views.ProfileView({selectedProfile:"Jorge", model:model});
     QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
+  }
+
+  function rainbowPastel(numOfSteps, step) {
+    // This function generates vibrant, "evenly spaced" colours (i.e. no clustering). This is ideal for creating easily distinguishable vibrant markers in Google Maps and other apps.
+    // Adam Cole, 2011-Sept-14
+    // HSV to RBG adapted from: http://mjijackson.com/2008/02/rgb-to-hsl-and-rgb-to-hsv-color-model-conversion-algorithms-in-javascript
+
+    var r, g, b;
+    var h = step / numOfSteps;
+    var i = ~~(h * 6);
+    var f = h * 6 - i;
+    var q = 1 - f;
+    switch(i % 6){
+      case 0: r = 1, g = f, b = 0; break;
+      case 1: r = q, g = 1, b = 0; break;
+      case 2: r = 0, g = 1, b = f; break;
+      case 3: r = 0, g = q, b = 1; break;
+      case 4: r = f, g = 0, b = 1; break;
+      case 5: r = 1, g = 0, b = q; break;
+    }
+//  console.log("numOfSteps: " + numOfSteps + " step: " + step + "h: " + h + " i: " + i +" f: " + f +" q: " + q + " i%6: " + i%6 + " r: " + r + " g: " + g + " b: " + b)
+//  var c = "#" + ("00" + (~ ~(r * 255)).toString(16)).slice(-2) + ("00" + (~ ~(g * 255)).toString(16)).slice(-2) + ("00" + (~ ~(b * 255)).toString(16)).slice(-2);
+    var red = ~ ~(r * 255);
+    var green = ~ ~(g * 255);
+    var blue = ~ ~(b * 255);
+    // pastel kudos: http://stackoverflow.com/questions/43044/algorithm-to-randomly-generate-an-aesthetically-pleasing-color-palette
+    // mix the color - in this case, white (255,255,255)
+
+    red = (red + 255) / 2;
+    green = (green + 255) / 2;
+    blue = (blue + 255) / 2;
+
+    var c = "#" + ("00" + (~~red).toString(16)).slice(-2) + ("00" + (~~green).toString(16)).slice(-2) + ("00" + (~~blue).toString(16)).slice(-2);
+    return (c);
   }
   
   
