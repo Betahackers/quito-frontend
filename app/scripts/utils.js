@@ -108,6 +108,14 @@
 //      success: function(record){
 //        console.log("Fetched record: " + JSON.stringify(record));
 //      }})
+
+      if (QuitoFrontend.markerDots) {
+        for (var i = 0; i < QuitoFrontend.markerDots.length; i++) {
+            QuitoFrontend.markerDots[i].setMap(null);
+        }
+      }
+      QuitoFrontend.markerDots = [];
+
       for (var i = 0; i < markers.length; i++) {
         var marker = markers[i].location
 
@@ -117,6 +125,8 @@
             icon: 'marker-images/point_moods.png',
             marker: marker
         });
+        
+        QuitoFrontend.markerDots.push(markerDot);
 
         google.maps.event.addListener(markerDot, 'click', function () {
           console.log("hey");
