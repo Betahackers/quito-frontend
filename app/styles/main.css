@@ -7,9 +7,25 @@ html {
 body {
     height: 100%;
     margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+    padding: 60px 0px 0px 0px;
+    font-family: 'Montserrat', sans-serif !important;
 }
+
+.navbar {
+    background-color: rgba(230, 230, 230, 1);
+    height: 65px;
+    padding-top: 6px;
+}
+
+.navbar-brand {
+    padding: 0 !important;
+    margin-left: 10px;
+}
+
+.navbar-brand img {
+    height: 50px;
+}
+
 #map-canvas {
     height: 100%;
     z-order: 0;
@@ -22,28 +38,118 @@ body {
     font-size: 14px;
 }
 
-#filter-container>a {
-    display: block;
-    background-color: rgba(0, 0, 0, 0.8);
+#filter-container a {
     color: white;
+}
+
+#filter-container a:hover {
+    text-decoration: none;
+}
+
+.sidebar-box {
+    display: block;
+    width: 150px;
+    font-size: 18px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.25);
+    border-radius: 0 2px 2px 0;
+}
+
+.filter-box {
+    margin-bottom: 10px;
+}
+
+.sidebar-box>a {
+    padding-left: 20px;
+}
+
+.filter-box ul {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid white;
     font-size: 14px;
-    padding: 10px;
-    text-align: center;
+    
+    line-height: 2;
+    margin-top: 10px;
+    padding-top: 9px;
+    padding-left: 16px;
+}
+
+.filter-moods {
+    background-color: rgba(85, 197, 192, 1);
+}
+
+.filter-categories {
+    background-color: rgba(154, 147, 210, 1);
+}
+
+.profiles-box {
+    background-color: rgba(147, 204, 58, 1);
+}
+
+.profiles-expanded {
+    overflow-y: scroll;
+    padding-left: 5px;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.profile-search {
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-left: 0;
+    border-right: 0;
+    margin-top: 5px;
+}
+
+.profiles-expanded ul {
+    margin-top: 5px;
+    list-style: none;
+    padding: 0;
+    font-size: 14px;
+    line-height: 2;
+    color: white
+}
+
+.profiles-expanded li {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.profile-avatar-tiny {
+    width: 28px;
 }
 
 /** PROFILE AREA **/
 
 .profile {
-
-    float: right;
+    position: absolute;
+    z-index: 100;   /* Make sure this thing is on top of the map */
+    top: 0;
+    right: 0;
     width: 220px;
-    font-family: 'Montserrat-Regular', sans-serif;
+    height: 100vh;
     background-color: rgb(53, 174, 255);
     color: white;
     box-shadow: -1px 0px 10px 1px #aaaaaa;
+
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-content: stretch;
+    align-content: stretch;    
 }
 
 .profile-header {
+    margin-top: 65px;
     padding: 12px;
 }
 
@@ -67,7 +173,7 @@ body {
 }
 
 .profile-people-name {
-    font-family: 'Montserrat-Bold';
+    font-weight: 700;
     font-size: 14px;
     padding-left: 50px;
     padding-bottom: 5px;
@@ -90,7 +196,7 @@ body {
 
 .profile-location {
     font-size: 10px;
-    font-family: "Montserrat-Bold";
+    font-weight: 700;
 }
 
 .profile-work {
@@ -107,10 +213,13 @@ body {
     color: black;
     padding: 15px 12px;
     font-size: 11px;
+    width: 220px;
+
+    flex: 1;
+    -webkit-flex: 1;
 }
 
 .profile-content > h1 {
-    font-family: "Montserrat-Regular";
     font-size: 14px;
     text-transform: uppercase;
 }
@@ -119,19 +228,19 @@ body {
 /** END PROFILE AREA **/
 
 
-#filter-container>a:hover {
-    text-decoration: none;
-}
+/*#filter-container>a:hover {*/
+    /*text-decoration: none;*/
+/*}*/
 
-#filter-container>ul {
-    list-style: none;
-    background-color: #f08080;
-    padding-left: 0;
-    font-size: 32px;
-    color: white;
-    padding-left: 20px;
-}
+/*#filter-container>ul {*/
+    /*list-style: none;*/
+    /*background-color: #f08080;*/
+    /*padding-left: 0;*/
+    /*font-size: 32px;*/
+    /*color: white;*/
+    /*padding-left: 20px;*/
+/*}*/
 
-#filter-container li {
-    margin-bottom: 5px;
-}
+/*#filter-container li {*/
+    /*margin-bottom: 5px;*/
+/*}*/

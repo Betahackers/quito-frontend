@@ -1,1 +1,17 @@
-[{}]
+[
+  {
+    "latitude": 41.390412,
+    "longitude": 2.157952,
+    "title": "Espito Chupitos"
+  },
+  {
+    "latitude": 41.385244,
+    "longitude": 2.169797,
+    "title": "Loveja Negra"
+  },
+  {
+    "latitude": 41.382555,
+    "longitude": 2.163403,
+    "title": "Fabrica Moritz"
+  }
+]

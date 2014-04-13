@@ -27,28 +27,71 @@
 
         <div id="content">
         </div>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <a class="navbar-brand" href="/"><img src="/fromto.png"></a>
+        </nav>
+
         <div id="map-canvas">
         </div>
 
         <div id="filter-container">
-            <a href="#" data-toggle="collapse" data-target="#moods">Mood</a>
-            <ul id="moods" class="collapse">
-                <li id="happy">Happy</li>
-                <li id="love">In love</li>
-                <li id="sad">Sad</li>
-                <li id="anx">Anxious</li>
-                <li id="despair">We're never gonna make it!</li>
-            </ul>
-
-            <a href="#" data-toggle="collapse" data-target="#categories">Category</a>
-            <ul id="categories" class="collapse">
-                <li id="arch">Architecture</li>
-                <li id="night">Nightlife</li>
-                <li id="restau">Restaurants</li>
-            </ul>
-
+            <div class="sidebar-box filter-box filter-moods">
+                <a id="moodsDropdown" href="#" data-toggle="collapse" data-target="#moods">Moods</a>
+                <div id="moods" class="collapse">
+                    <ul>
+                        <li id="happy"><a href="#">Happy</a></li>
+                        <li><a href="#">In love</a></li>
+                        <li><a href="#">Sad</a></li>
+                        <li><a href="#">Panicking</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="sidebar-box filter-box filter-categories">
+                <a id="categoriesDropdown" href="#" data-toggle="collapse" data-target="#categories">Activities</a>
+                <div id="categories" class="collapse">
+                    <ul>
+                        <li><a href="#">Eat</a></li>
+                        <li><a href="#">Drink</a></li>
+                        <li><a href="#">Healthy Life</a></li>
+                        <li><a href="#">Culture</a></li>
+                        <li><a href="#">Shopping</a></li>
+                        <li><a href="#">Dancing</a></li>
+                        <li><a href="#">Live Music</a></li>
+                        <li><a href="#">Walks</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="sidebar-box profiles-box">
+                <a id="profilesLink" href="javascript:void(0)">Profiles</a>
+                <div class="profiles-container collapse">
+                    <div id="profilesList" class="profiles-expanded">
+                        <input class="profile-search" type="text" placeholder="Search...">
+                        <!--<ul>-->
+                            <!--<li>-->
+                                <!--<a href="#">-->
+                                    <!--<img src="http://www.gravatar.com/avatar/159affceae523b0a5347a6392643bd06?d=identicon" alt="User Avatar" class="img-circle profile-avatar-tiny">-->
+                                    <!--Kristian Dupont-->
+                                <!--</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<a href="#">-->
+                                    <!--<img src="http://www.gravatar.com/avatar/159affceae523b0a5347a6392643bd06?d=identicon" alt="User Avatar" class="img-circle profile-avatar-tiny">-->
+                                    <!--Kristian Dupont-->
+                                <!--</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<a href="#">-->
+                                    <!--<img src="http://www.gravatar.com/avatar/159affceae523b0a5347a6392643bd06?d=identicon" alt="User Avatar" class="img-circle profile-avatar-tiny">-->
+                                    <!--Kristian Dupont-->
+                                <!--</a>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="info" style="display: none;">I am an alien.</div>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -96,6 +139,8 @@
         <script src="scripts/views/MapView.js"></script>
         <script src="scripts/views/ProfileView.js"></script>
         <script src="scripts/views/CategoryView.js"></script>
+        <script src="scripts/views/ProfileListView.js"></script>
+        <script src="scripts/views/ProfileItemView.js"></script>
         <script src="scripts/collections/MarkerCollection.js"></script>
         <script src="scripts/models/Marker.js"></script>
         <!-- endbuild -->

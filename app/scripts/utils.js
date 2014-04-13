@@ -1,62 +1,24 @@
 
   function initializeMap() {
       var mapOptions = {
-          zoom: 14,
-          center: new google.maps.LatLng(41.382555, 2.163403)
+          center: new google.maps.LatLng(41.39479, 2.1487679),
+          zoomControl: false,
+          mapTypeControl: false,
+          panControl: false,
+          streetViewControl: false,
+          zoom: 14
       }
-      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      
+    QuitoFrontend.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-      var markers = [
-          {
-              latitude: 41.390412,
-              longitude: 2.157952,
-              title: 'Espito Chupitos'
-          },
-          {
-              latitude: 41.385244,
-              longitude: 2.169797,
-              title: "L'oveja Negra"
-          },
-          {
-              latitude: 41.382555,
-              longitude: 2.163403,
-              title: "Fabrica Moritz"
-          }
-      ];
-
-      for (var i=0;i<markers.length;i++)
-      {
-
-          var populationOptions = {
-              strokeColor: '#000',
-              strokeOpacity: 1,
-              strokeWeight: 1,
-              fillColor: '#35aeff',
-              fillOpacity: 1,
-              map: map,
-              center: new google.maps.LatLng(markers[i].latitude, markers[i].longitude),
-              radius: 100
-          };
-          // Add the circle for this city to the map.
-          var circle = new google.maps.Circle(populationOptions);
-
-          google.maps.event.addListener(circle, 'click', function() {
-              alert("hey");
-          });
-      }
-
-
+    var mapType = new google.maps.StyledMapType([{ "stylers": [{ "saturation": -100 }] }], {});
+    QuitoFrontend.map.mapTypes.set('maptype', mapType);
+    QuitoFrontend.map.setMapTypeId('maptype');
   }
-
-
 
   $('#happy').on('click', function (e) {
     console.log("click hello man.")
-    var model = new QuitoFrontend.Models.Profile();
-    model.set("name","Jorge")
-    model.set("desc","He is a smart fella")
-    QuitoFrontend.ProfileView = new QuitoFrontend.Views.ProfileView({selectedProfile:"Jorge", model:model});
-    QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
+    fetchMarker("happy");
   })
 
   $('#love').on('click', function (e) {
@@ -103,3 +65,71 @@
     QuitoFrontend.ProfileView = new QuitoFrontend.Views.ProfileView({selectedProfile:"Jorge", model:model});
     QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
   })
+
+  $("#profilesLink").click(function () {
+    if (!$(".profiles-container").hasClass("in")) {
+      var windowHeight = $(window).height();
+      var boxTop = $(".profiles-box").offset().top;
+      var boxHeight = $(".profiles-box").outerHeight();
+      var newHeight = windowHeight - (boxTop + boxHeight);
+      $(".profiles-expanded").css("height", newHeight + "px");
+    }
+
+    $(".profiles-container").collapse("toggle");
+  });
+
+  function fetchMarker(markerType) {
+    var jqxhr = $.get("http://127.0.0.1:9292/www.fromto.es/v1/locations.json", function (data) {
+      console.log("success");
+      QuitoFrontend.markers = data
+      //var markers = new QuitoFrontend.Collections.MarkerCollection(QuitoFrontend.markers)
+      var markers = data.locations;
+//    markers.fetch( {
+//      success: function(record){
+//        console.log("Fetched record: " + JSON.stringify(record));
+//      }})
+      for (var i = 0; i < markers.length; i++) {
+//        var marker = markers.models[i]
+        var marker = markers[i].location
+        var populationOptions = {
+          strokeColor: '#000',
+          strokeOpacity: 1,
+          strokeWeight: 1,
+          fillColor: '#35aeff',
+          fillOpacity: 1,
+          map: QuitoFrontend.map,
+//          center: new google.maps.LatLng(marker.get("latitude"), marker.get("longitude")),
+          center: new google.maps.LatLng(marker.latitude, marker.longitude),
+          radius: 100
+        };
+        // Add the circle for this city to the map.
+        var circle = new google.maps.Circle(populationOptions);
+        circle.marker = marker
+        google.maps.event.addListener(circle, 'click', function () {
+          console.log("hey");
+          var model = new QuitoFrontend.Models.Profile();
+          model.set("name",this.marker.name)
+          model.set("desc","Dancing about Architecture")
+          displayProfileView(model)
+        });
+      }
+    }
+    )
+      .done(function () {
+        console.log("second success");
+      })
+      .fail(function (e) {
+        console.log("error");
+      })
+      .always(function () {
+        console.log("finished");
+      });
+  }
+
+  function displayProfileView(model) {
+
+    QuitoFrontend.ProfileView = new QuitoFrontend.Views.ProfileView({selectedProfile:"Jorge", model:model});
+    QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
+  }
+  
+  
