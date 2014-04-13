@@ -109,23 +109,16 @@
 //        console.log("Fetched record: " + JSON.stringify(record));
 //      }})
       for (var i = 0; i < markers.length; i++) {
-//        var marker = markers.models[i]
         var marker = markers[i].location
-        var populationOptions = {
-          strokeColor: '#000',
-          strokeOpacity: 1,
-          strokeWeight: 1,
-          fillColor: '#35aeff',
-          fillOpacity: 1,
-          map: QuitoFrontend.map,
-//          center: new google.maps.LatLng(marker.get("latitude"), marker.get("longitude")),
-          center: new google.maps.LatLng(marker.latitude, marker.longitude),
-          radius: 100
-        };
-        // Add the circle for this city to the map.
-        var circle = new google.maps.Circle(populationOptions);
-        circle.marker = marker
-        google.maps.event.addListener(circle, 'click', function () {
+
+        var markerDot = new google.maps.Marker({
+            position: new google.maps.LatLng(marker.latitude, marker.longitude),
+            map: QuitoFrontend.map,
+            icon: 'marker-images/point_moods.png',
+            marker: marker
+        });
+
+        google.maps.event.addListener(markerDot, 'click', function () {
           console.log("hey");
           // http://www.fromto.es/v1/articles/1.json
           // http://www.fromto.es/v1/locations/1.json
