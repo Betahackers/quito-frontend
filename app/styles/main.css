@@ -126,6 +126,31 @@ body {
     width: 28px;
 }
 
+#about-button {
+    position: absolute;
+    left: 0;
+    width: 82px;
+    padding-left: 20px;
+    bottom: 30px;
+    opacity: 0.7;
+    background-color: #333;
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.25);
+    border-radius: 0 2px 2px 0;   
+}
+
+#about-button a {
+    color: white;
+    font-size: 12px;
+}
+
+.about-container {
+    width: 800px;
+    height: 300px;
+    margin: auto;
+    margin-top: 150px;
+}
+
+
 /** PROFILE AREA **/
 
 .profile {

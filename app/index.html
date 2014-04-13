@@ -68,28 +68,18 @@
                 <div class="profiles-container collapse">
                     <div id="profilesList" class="profiles-expanded">
                         <input class="profile-search" type="text" placeholder="Search...">
-                        <!--<ul>-->
-                            <!--<li>-->
-                                <!--<a href="#">-->
-                                    <!--<img src="http://www.gravatar.com/avatar/159affceae523b0a5347a6392643bd06?d=identicon" alt="User Avatar" class="img-circle profile-avatar-tiny">-->
-                                    <!--Kristian Dupont-->
-                                <!--</a>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                                <!--<a href="#">-->
-                                    <!--<img src="http://www.gravatar.com/avatar/159affceae523b0a5347a6392643bd06?d=identicon" alt="User Avatar" class="img-circle profile-avatar-tiny">-->
-                                    <!--Kristian Dupont-->
-                                <!--</a>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                                <!--<a href="#">-->
-                                    <!--<img src="http://www.gravatar.com/avatar/159affceae523b0a5347a6392643bd06?d=identicon" alt="User Avatar" class="img-circle profile-avatar-tiny">-->
-                                    <!--Kristian Dupont-->
-                                <!--</a>-->
-                            <!--</li>-->
-                        <!--</ul>-->
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div id="about-button">
+            <a href="#" data-toggle="modal" data-target="#about-dialog">About</a>
+        </div>
+        
+        <div id="about-dialog" class="modal custom fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="about-container">
+                <canvas id='about-canvas' width='800' height='300'>Your browser does not support the Canvas element.</canvas>
             </div>
         </div>
 
@@ -126,6 +116,7 @@
         <script src="scripts/App.js"></script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK2j29aS720hndwhtfi1wPPSWhxXqthfM&sensor=true"></script>
         <script src="scripts/utils.js"></script>
+        <script src="scripts/aboutbox.js"></script>
         <script src="scripts/AppController.js"></script>
         <!--<script src="scripts/templates.js"></script>-->
         <!--<script src="scripts/main.js"></script>-->
