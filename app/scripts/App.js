@@ -21,7 +21,8 @@
   //Regions can contain views, Layouts, or subregions nested as necessary
   QuitoFrontend.addRegions({
     headerRegion:"header",
-    mainRegion:"#content"
+    mainRegion:"#content",
+    profileListRegion:"#profilesList"
   });
 
 
@@ -53,9 +54,8 @@
 //          App.headerRegion.show(new Header());
 //          App.mainRegion.show(new IncidentListCompositeView(viewOptions));
 
-          QuitoFrontend.ProfileListView = new QuitoFrontend.Views.ProfileListView({model:QuitoFrontend.ProfileList});
-          QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileListView)
-
+          QuitoFrontend.ProfileListView = new QuitoFrontend.Views.ProfileListView({collection:QuitoFrontend.ProfileList,itemView : QuitoFrontend.Views.ProfileItemView});
+          QuitoFrontend.profileListRegion.show(QuitoFrontend.ProfileListView)
         }}
     )
 

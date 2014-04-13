@@ -7,9 +7,10 @@ QuitoFrontend.Views = QuitoFrontend.Views || {};
 
   QuitoFrontend.Views.ProfileListView = Backbone.Marionette.CompositeView.extend({
 
+    tagName: "ul",
     template: JST['app/scripts/templates/ProfileListView.hbs'],
-    itemView : QuitoFrontend.ProfileItemView,
-    itemViewContainer : '#incidents'
+    itemView : QuitoFrontend.Views.ProfileItemView,
+    itemViewContainer : '#shortProfiles'
 
   });
 

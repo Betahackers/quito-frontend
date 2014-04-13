@@ -5,14 +5,13 @@ QuitoFrontend.Views = QuitoFrontend.Views || {};
 (function () {
   'use strict';
 
-  return Backbone.Marionette.CompositeView.extend({
-    tagName : 'tr',
-    //template : Handlebars.compile($("#search-template").html()),
+  QuitoFrontend.Views.ProfileItemView =  Backbone.Marionette.CompositeView.extend({
+    tagName : 'li',
     template: JST['app/scripts/templates/ProfileItemView.hbs'],
 
-    events : {
-      'click .profile' : 'displayItem'
-    },
+//    events : {
+//      'click .profile' : 'displayItem'
+//    },
 
     initialize : function() {
       //this.bindTo(this.model, 'change', this.render, this);
