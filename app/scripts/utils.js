@@ -17,7 +17,7 @@
 
   $('#happy').on('click', function (e) {
     console.log("click hello man.")
-    fetchMarker();
+    fetchMarker("happy");
   })
 
   $('#love').on('click', function (e) {
@@ -65,30 +65,31 @@
     QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
   })
 
-    $("#profilesLink").click(function () {
-        if (!$(".profiles-container").hasClass("in")) {
-            var windowHeight = $(window).height();
-            var boxTop = $(".profiles-box").offset().top;
-            var boxHeight = $(".profiles-box").outerHeight();
-            var newHeight = windowHeight - (boxTop + boxHeight);
-            $(".profiles-expanded").css("height", newHeight + "px");
-        }
-        
-        $(".profiles-container").collapse("toggle");
-    });
+  $("#profilesLink").click(function () {
+    if (!$(".profiles-container").hasClass("in")) {
+      var windowHeight = $(window).height();
+      var boxTop = $(".profiles-box").offset().top;
+      var boxHeight = $(".profiles-box").outerHeight();
+      var newHeight = windowHeight - (boxTop + boxHeight);
+      $(".profiles-expanded").css("height", newHeight + "px");
+    }
 
+    $(".profiles-container").collapse("toggle");
+  });
 
-  function fetchMarker() {
-    var jqxhr = $.get("/json/markers.json", function (data) {
+  function fetchMarker(markerType) {
+    var jqxhr = $.get("http://127.0.0.1:9292/rawgit.com/Betahackers/quito-backend/master/examples/locations.json", function (data) {
       console.log("success");
       QuitoFrontend.markers = data
-      var markers = new QuitoFrontend.Collections.MarkerCollection(QuitoFrontend.markers)
+      //var markers = new QuitoFrontend.Collections.MarkerCollection(QuitoFrontend.markers)
+      var markers = data.locations;
 //    markers.fetch( {
 //      success: function(record){
 //        console.log("Fetched record: " + JSON.stringify(record));
 //      }})
       for (var i = 0; i < markers.length; i++) {
-        var marker = markers.models[i]
+//        var marker = markers.models[i]
+        var marker = markers[i].location
         var populationOptions = {
           strokeColor: '#000',
           strokeOpacity: 1,
@@ -96,7 +97,8 @@
           fillColor: '#35aeff',
           fillOpacity: 1,
           map: QuitoFrontend.map,
-          center: new google.maps.LatLng(marker.get("latitude"), marker.get("longitude")),
+//          center: new google.maps.LatLng(marker.get("latitude"), marker.get("longitude")),
+          center: new google.maps.LatLng(marker.latitude, marker.longitude),
           radius: 100
         };
         // Add the circle for this city to the map.
@@ -109,11 +111,12 @@
           displayProfileView(model)
         });
       }
-    })
+    }
+    )
       .done(function () {
         console.log("second success");
       })
-      .fail(function () {
+      .fail(function (e) {
         console.log("error");
       })
       .always(function () {

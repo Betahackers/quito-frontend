@@ -7,15 +7,16 @@ QuitoFrontend.Collections = QuitoFrontend.Collections || {};
 
   QuitoFrontend.Collections.MarkerCollection = Backbone.Collection.extend({
 //    model: QuitoFrontend.Models.Marker,
-    url: '/json/markers.json',
+    url: 'http://www.fromto.es/v1/articles.json',
 
     model: function(attrs, options) {
       return new QuitoFrontend.Models.Marker(attrs, options);
-    }
+    },
 
-//    parse:function(results) {
-//      return _.pluck(results, 'value');
-//    }
+    parse:function(results) {
+      var markers = results.get("results.locations");
+      return markers;
+    }
   });
 
 })();
