@@ -40,6 +40,7 @@ body {
 
 #filter-container a {
     color: white;
+    z-index: 10;
 }
 
 #filter-container a:hover {
@@ -127,6 +128,7 @@ body {
 }
 
 #about-button {
+    z-index: 1;
     position: absolute;
     left: 0;
     width: 82px;
