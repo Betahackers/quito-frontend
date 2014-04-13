@@ -134,6 +134,21 @@
           // http://www.fromto.es/v1/locations/1.json
           var articleList = []
           var articles = this.marker.articles;
+          var article = this.marker.articles[0]
+          var articleId = article.id;
+          url = "http://127.0.0.1:9292/www.fromto.es/v1/articles/" + articleId + ".json"
+          var jqxhr = $.get(url, function (data) {
+            console.log("success");
+
+            var model = new QuitoFrontend.Models.Profile();
+            model.set("firstName",data.article.user.first_name)
+            model.set("lastName",data.article.user.last_name)
+            model.set("article",data.article)
+            model.set("desc","Dancing about Architecture")
+            displayProfileView(model)
+
+          })
+
 
 //          QuitoFrontend.ArticleList = new QuitoFrontend.Collections.ArticleCollection()
 //          QuitoFrontend.ArticleList.fetch (
@@ -150,12 +165,6 @@
 //                displayProfileView(model)
 //              }}
 //          )
-
-          var model = new QuitoFrontend.Models.Profile();
-//                model.set("name",this.marker.name)
-          model.set("articles",articles)
-          model.set("desc","Dancing about Architecture")
-          displayProfileView(model)
 
 
 //          for (var i = 0; i < articles.length; i++) {

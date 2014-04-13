@@ -4,9 +4,7 @@
 			<img class="profile-image" src="http://placehold.it/40x40" />
 		</div>
 		<div class="profile-people-name">
-			{{name}}
-			{{first_name}}
-			{{last_name}}
+     {{lastName}}
 		</div>
 		<div class="profile-people-text">
       {{desc}}
@@ -30,10 +28,9 @@
 		<!--<p>-->
 			<!--Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.-->
 		<!--</p>-->
-    {{#each articles}}
-        <li>{{title}}</li>
-        <h1>{{content}}</h1>
-    {{/each}}
+
+      <h1>{{article.title}}</h1>
+      <p>{{article.content}}</p>
 
 	</div>
 </div>
