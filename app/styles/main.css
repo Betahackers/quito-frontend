@@ -7,8 +7,8 @@ html {
 body {
     height: 100%;
     margin: 0;
-    padding: 60px 0px 0px 0px;
-    font-family: 'Montserrat-Regular', sans-serif;
+    padding: 0;
+    font-family: sans-serif;
 }
 
 .navbar {
@@ -36,6 +36,7 @@ body {
     left: 0;
     top: 100px;
     font-size: 14px;
+    font-family: 'Montserrat-Regular', sans-serif;
 }
 
 #filter-container a {
@@ -79,15 +80,15 @@ body {
 }
 
 .filter-moods {
-    background-color: rgba(85, 182, 101, 1);
+    background-color: rgba(85, 197, 192, 1);
 }
 
 .filter-categories {
-    background-color: rgba(155, 212, 57, 1);
+    background-color: rgba(154, 147, 210, 1);
 }
 
 .profiles-box {
-    background-color: rgba(59, 174, 251, 1);
+    background-color: rgba(147, 204, 58, 1);
 }
 
 .profiles-expanded {
@@ -135,7 +136,6 @@ body {
     background-color: rgb(53, 174, 255);
     color: white;
     box-shadow: -1px 0px 10px 1px #aaaaaa;
-    min-height: 100%
 }
 
 .profile-header {
@@ -202,10 +202,6 @@ body {
     color: black;
     padding: 15px 12px;
     font-size: 11px;
-        width: 220px;
-	position: absolute;
-height: 100%;
-
 }
 
 .profile-content > h1 {
