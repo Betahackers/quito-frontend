@@ -1,11 +1,18 @@
 
   function initializeMap() {
       var mapOptions = {
-          zoom: 14,
-          center: new google.maps.LatLng(41.382555, 2.163403)
+          center: new google.maps.LatLng(41.39479, 2.1487679),
+          zoomControl: false,
+          mapTypeControl: false,
+          panControl: false,
+          zoom: 14
       }
+      
     QuitoFrontend.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
+    var mapType = new google.maps.StyledMapType([{ "stylers": [{ "saturation": -100 }] }], {});
+    QuitoFrontend.map.mapTypes.set('maptype', mapType);
+    QuitoFrontend.map.setMapTypeId('maptype');
   }
 
   $('#happy').on('click', function (e) {
@@ -58,9 +65,19 @@
     QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
   })
 
+  $("#profilesLink").click(function () {
+    if (!$(".profiles-container").hasClass("in")) {
+      var windowHeight = $(window).height();
+      var boxTop = $(".profiles-box").offset().top;
+      var boxHeight = $(".profiles-box").outerHeight();
+      var newHeight = windowHeight - (boxTop + boxHeight);
+      $(".profiles-expanded").css("height", newHeight + "px");
+    }
+
+    $(".profiles-container").collapse("toggle");
+  });
+
   function fetchMarker(markerType) {
-
-
     var jqxhr = $.get("http://127.0.0.1:9292/www.fromto.es/v1/articles.json", function (data) {
       console.log("success");
       QuitoFrontend.markers = data
