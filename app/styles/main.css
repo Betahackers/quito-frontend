@@ -8,7 +8,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 60px 0px 0px 0px;
-    font-family: 'Montserrat-Regular', sans-serif;
+    font-family: 'Montserrat', sans-serif !important;
 }
 
 .navbar {
@@ -36,7 +36,6 @@ body {
     left: 0;
     top: 100px;
     font-size: 14px;
-    font-family: 'Montserrat-Regular', sans-serif;
 }
 
 #filter-container a {
@@ -129,17 +128,28 @@ body {
 /** PROFILE AREA **/
 
 .profile {
-
-    float: right;
+    position: absolute;
+    z-index: 100;   /* Make sure this thing is on top of the map */
+    top: 0;
+    right: 0;
     width: 220px;
-    font-family: 'Montserrat-Regular', sans-serif;
+    height: 100vh;
     background-color: rgb(53, 174, 255);
     color: white;
     box-shadow: -1px 0px 10px 1px #aaaaaa;
-    min-height: 100%
+
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-content: stretch;
+    align-content: stretch;    
 }
 
 .profile-header {
+    margin-top: 65px;
     padding: 12px;
 }
 
@@ -163,7 +173,7 @@ body {
 }
 
 .profile-people-name {
-    font-family: 'Montserrat-Bold';
+    font-weight: 700;
     font-size: 14px;
     padding-left: 50px;
     padding-bottom: 5px;
@@ -186,7 +196,7 @@ body {
 
 .profile-location {
     font-size: 10px;
-    font-family: "Montserrat-Bold";
+    font-weight: 700;
 }
 
 .profile-work {
@@ -203,14 +213,13 @@ body {
     color: black;
     padding: 15px 12px;
     font-size: 11px;
-        width: 220px;
-	position: absolute;
-height: 100%;
+    width: 220px;
 
+    flex: 1;
+    -webkit-flex: 1;
 }
 
 .profile-content > h1 {
-    font-family: "Montserrat-Regular";
     font-size: 14px;
     text-transform: uppercase;
 }

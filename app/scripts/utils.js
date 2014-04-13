@@ -131,3 +131,5 @@
     QuitoFrontend.ProfileView = new QuitoFrontend.Views.ProfileView({selectedProfile:"Jorge", model:model});
     QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
   }
+  
+  
