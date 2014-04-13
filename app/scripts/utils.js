@@ -18,70 +18,70 @@
 
   $('#Illegal').on('click', function (e) {
     console.log("click Illegal man.")
-    fetchMarker("Illegal");
+    fetchMarker("Illegal","mood");
   })
   $('#Sociable').on('click', function (e) {
     console.log("click Sociable man.")
-    fetchMarker("Sociable");
+    fetchMarker("Sociable","mood");
   })
   $('#Adventure').on('click', function (e) {
     console.log("click Adventure man.")
-    fetchMarker("Adventure");
+    fetchMarker("Adventure","mood");
   })
   $('#Active').on('click', function (e) {
     console.log("click Active man.")
-    fetchMarker("Active");
+    fetchMarker("Active","mood");
   })
   $('#Cultural').on('click', function (e) {
     console.log("click Cultural man.")
-    fetchMarker("Cultural");
+    fetchMarker("Cultural","mood");
   })
   $('#Romantic').on('click', function (e) {
     console.log("click Romantic man.")
-    fetchMarker("Romantic");
+    fetchMarker("Romantic","mood");
   })
   $('#Relaxed').on('click', function (e) {
     console.log("click Relaxed man.")
-    fetchMarker("Relaxed");
+    fetchMarker("Relaxed","mood");
   })
   $('#Solitary').on('click', function (e) {
     console.log("click Solitary man.")
-    fetchMarker("Solitary");
+    fetchMarker("Solitary","mood");
   })
 
 //  {"categories":["Eat","Drink","Healthy Life","Culture","Shopping","Dancing","Live Music","Walks"],
 
   $('#Eat').on('click', function (e) {
     console.log("click Eat man.")
-    fetchMarker("Eat");
+    fetchMarker("Eat","categories");
   })
   $('#Drink').on('click', function (e) {
     console.log("click Drink man.")
-    fetchMarker("Drink");
+    fetchMarker("Drink","categories");
   })
   $('#HealthyLife').on('click', function (e) {
     console.log("click Healthy Life man.")
-    fetchMarker("Healthy Life");
+    fetchMarker("Healthy Life","categories");
   })
   $('#Culture').on('click', function (e) {
     console.log("click Culture man.")
-    fetchMarker("Culture");
+    fetchMarker("Culture","categories");
   })
   $('#Shopping').on('click', function (e) {
     console.log("click Shopping man.")
-    fetchMarker("Shopping");
+    fetchMarker("Shopping","categories");
   })
   $('#Dancing').on('click', function (e) {
     console.log("click Dancing man.")
-    fetchMarker("Dancing");
+    fetchMarker("Dancing","categories");
   })
   $('#LiveMusic').on('click', function (e) {
     console.log("click Live Music man.")
-    fetchMarker("Live Music");
+    fetchMarker("Live Music","categories");
   })
   $('#Walks').on('click', function (e) {
     console.log("click Walks man.")
-    fetchMarker("Walks");
+    fetchMarker("Walks","categories");
   })
 
 
@@ -97,8 +97,8 @@
     $(".profiles-container").collapse("toggle");
   });
 
-  function fetchMarker(markerType) {
-    var url = "http://127.0.0.1:9292/www.fromto.es/v1/locations.json?mood=" + markerType
+  function fetchMarker(markerType, type) {
+    var url = "http://127.0.0.1:9292/www.fromto.es/v1/locations.json?"+type+"=" + markerType
     var jqxhr = $.get(url, function (data) {
       console.log("success");
       QuitoFrontend.markers = data
