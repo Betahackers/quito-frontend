@@ -37,6 +37,29 @@
     if(Backbone.history){
       Backbone.history.start();
     }
+    QuitoFrontend.ProfileList = new QuitoFrontend.Collections.ProfileCollection()
+    QuitoFrontend.ProfileList.fetch (
+      {
+        success: function(collection, response, options) {
+          console.log("item count: " + collection.length);
+//          FORMY.Incidents = incidentList;
+
+//          var page = new Page({content: "Default List of Incidents:", endkey:endkey, searchTerm: searchTerm, department: departmentId});
+//          var viewOptions = {
+//            model: page,
+//            collection : incidentList,
+//            endkey: endkey
+//          };
+//          App.headerRegion.show(new Header());
+//          App.mainRegion.show(new IncidentListCompositeView(viewOptions));
+
+          QuitoFrontend.ProfileListView = new QuitoFrontend.Views.ProfileListView({model:QuitoFrontend.ProfileList});
+          QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileListView)
+
+        }}
+    )
+
+
   });
 
 
@@ -44,7 +67,6 @@
 //  QuitoFrontend.db = new PouchDB('BetahackDb')
 //  Backbone.sync = BackbonePouch.sync({db: QuitoFrontend.db});
 //  Backbone.Model.prototype.idAttribute = '_id';
-
 
   return QuitoFrontend;
 

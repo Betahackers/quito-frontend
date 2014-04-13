@@ -7,7 +7,8 @@ QuitoFrontend.Collections = QuitoFrontend.Collections || {};
 
     QuitoFrontend.Collections.ProfileCollection = Backbone.Collection.extend({
 
-        model: QuitoFrontend.Models.ProfileCollection
+      model: QuitoFrontend.Models.Profile,
+      url:"json/profiles.json"
 
     });
 
