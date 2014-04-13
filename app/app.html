@@ -1,0 +1,147 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Fromto</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/bootstrap.css">
+
+
+        <!-- endbuild -->
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="bower_components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="content">
+        </div>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <a class="navbar-brand" href="/"><img src="/fromto.png"></a>
+        </nav>
+
+        <div id="map-canvas">
+        </div>
+
+        <div id="filter-container">
+            <div class="sidebar-box filter-box filter-moods">
+                <a id="moodsDropdown" href="#" data-toggle="collapse" data-target="#moods">Moods</a>
+                <div id="moods" class="collapse">
+                    <ul>
+                        <li id="Illegal"><a href="#">Illegal</a></li>
+                        <li id="Sociable"><a href="#">Sociable</a></li>
+                        <li id="Adventure"><a href="#">Adventure</a></li>
+                        <li id="Active"><a href="#">Active</a></li>
+                        <li id="Cultural"><a href="#">Cultural</a></li>
+                        <li id="Romantic"><a href="#">Romantic</a></li>
+                        <li id="Relaxed"><a href="#">Relaxed</a></li>
+                        <li id="Solitary"><a href="#">Solitary</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="sidebar-box filter-box filter-categories">
+                <a id="categoriesDropdown" href="#" data-toggle="collapse" data-target="#categories">Activities</a>
+                <div id="categories" class="collapse">
+                    <ul>
+                        <li id="Eat"><a href="#">Eat</a></li>
+                        <li id="Drink"><a href="#">Drink</a></li>
+                        <li id="Healthy Life"><a href="#">Healthy Life</a></li>
+                        <li id="Culture"><a href="#">Culture</a></li>
+                        <li id="Shopping"><a href="#">Shopping</a></li>
+                        <li id="Dancing"><a href="#">Dancing</a></li>
+                        <li id="Live Music"><a href="#">Live Music</a></li>
+                        <li id="Walks"><a href="#">Walks</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="sidebar-box profiles-box">
+                <a id="profilesLink" href="javascript:void(0)">Profiles</a>
+                <div class="profiles-container collapse">
+                    <div id="profilesList" class="profiles-expanded">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="about-button">
+            <a href="#" data-toggle="modal" data-target="#about-dialog">About</a>
+        </div>
+        
+        <div id="about-dialog" class="modal custom fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="about-container">
+                <canvas id='about-canvas' width='800' height='300'>Your browser does not support the Canvas element.</canvas>
+            </div>
+        </div>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-45895640-2', 'fromto.es');ga('send','pageview');
+        </script>
+	
+        <!-- build:js scripts/vendor.js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/backbone/backbone.js"></script>
+        <script src="bower_components/handlebars/handlebars.js"></script>
+
+        <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/main.js -->
+        <script src="scripts/vendor/bootstrap.js"></script>
+        <script src="scripts/vendor/has.js"></script>
+        <script src="scripts/vendor/url.js"></script>
+        <script src="scripts/vendor/tween.js"></script>
+        <script src="scripts/vendor/two.js"></script>
+        <script src="scripts/vendor/underscore.js"></script>
+        <!--<script src="scripts/vendor/pouchdb-nightly.js"></script>-->
+        <script src="scripts/vendor/backbone-pouch.js"></script>
+        <script src="scripts/vendor/backbone.marionette.js"></script>
+        <!--<script src="scripts/utils.js"></script>-->
+        <!--<script src="scripts/utils-tangerine.js"></script>-->
+        <script src="scripts/App.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK2j29aS720hndwhtfi1wPPSWhxXqthfM&sensor=true"></script>
+        <script src="scripts/utils.js"></script>
+        <script src="scripts/aboutbox.js"></script>
+        <script src="scripts/AppController.js"></script>
+        <!--<script src="scripts/templates.js"></script>-->
+        <!--<script src="scripts/main.js"></script>-->
+        <script src="scripts/templates.js"></script>
+        <script src="scripts/models/Profile.js"></script>
+        <script src="scripts/routers/AppRouter.js"></script>
+        <script src="scripts/views/ProfileView.js"></script>
+        <script src="scripts/collections/ProfileCollection.js"></script>
+        <script src="scripts/collections/MoodCollection.js"></script>
+        <script src="scripts/models/Home.js"></script>
+        <script src="scripts/views/HomeView.js"></script>
+        <script src="scripts/views/MapView.js"></script>
+        <script src="scripts/views/ProfileView.js"></script>
+        <script src="scripts/views/CategoryView.js"></script>
+        <script src="scripts/views/ProfileListView.js"></script>
+        <script src="scripts/views/ProfileItemView.js"></script>
+        <script src="scripts/views/MoodListView.js"></script>
+        <script src="scripts/views/MoodItemView.js"></script>
+        <script src="scripts/collections/MarkerCollection.js"></script>
+        <script src="scripts/collections/ArticleCollection.js"></script>
+        <script src="scripts/models/Marker.js"></script>
+        <script src="scripts/models/Article.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
