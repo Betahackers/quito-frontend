@@ -18,9 +18,12 @@ body {
 }
 
 .navbar-brand {
+    padding: 0 !important;
     margin-left: 10px;
-    font-size: 38px;
-    color: black !important;
+}
+
+.navbar-brand img {
+    height: 50px;
 }
 
 #map-canvas {
@@ -105,7 +108,21 @@ body {
 }
 
 .profiles-expanded ul {
+    margin-top: 5px;
     list-style: none;
+    padding: 0;
+    font-size: 14px;
+    line-height: 2;
+    color: white
+}
+
+.profiles-expanded li {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.profile-avatar-tiny {
+    width: 28px;
 }
 
 /** PROFILE AREA **/

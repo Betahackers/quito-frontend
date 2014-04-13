@@ -5,6 +5,7 @@
           zoomControl: false,
           mapTypeControl: false,
           panControl: false,
+          streetViewControl: false,
           zoom: 14
       }
       
