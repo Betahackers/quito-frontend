@@ -35,38 +35,42 @@
         </div>
 
         <div id="filter-container">
-            <div class="filter-box filter-moods">
+            <div class="sidebar-box filter-box filter-moods">
                 <a id="moodsDropdown" href="#" data-toggle="collapse" data-target="#moods">Mood</a>
-                <ul id="moods" class="collapse">
-                    <li id="happy"><a href="#">Happy</a></li>
-                    <li><a href="#">In love</a></li>
-                    <li><a href="#">Sad</a></li>
-                    <li><a href="#">Panicking</a></li>
-                </ul>
+                <div id="moods" class="collapse">
+                    <ul>
+                        <li id="happy"><a href="#">Happy</a></li>
+                        <li><a href="#">In love</a></li>
+                        <li><a href="#">Sad</a></li>
+                        <li><a href="#">Panicking</a></li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="filter-box filter-categories">
+            
+            <div class="sidebar-box filter-box filter-categories">
                 <a id="categoriesDropdown" href="#" data-toggle="collapse" data-target="#categories">Category</a>
-                <ul id="categories" class="collapse">
-
-                    <li><a href="#">Eat</a></li>
-                    <li><a href="#">Drink</a></li>
-                    <li><a href="#">Healthy Life</a></li>
-                    <li><a href="#">Culture</a></li>
-                    <li><a href="#">Shopping</a></li>
-                    <li><a href="#">Dancing</a></li>
-                    <li><a href="#">Live Music</a></li>
-                    <li><a href="#">Walks</a></li>
-                </ul>
+                <div id="categories" class="collapse">
+                    <ul>
+                        <li><a href="#">Eat</a></li>
+                        <li><a href="#">Drink</a></li>
+                        <li><a href="#">Healthy Life</a></li>
+                        <li><a href="#">Culture</a></li>
+                        <li><a href="#">Shopping</a></li>
+                        <li><a href="#">Dancing</a></li>
+                        <li><a href="#">Live Music</a></li>
+                        <li><a href="#">Walks</a></li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="profiles-box">
-                <a id="profilesLink" href="#">Profiles</a>
+            
+            <div class="sidebar-box profiles-box">
+                <a id="profilesLink" href="javascript:void(0)">Profiles</a>
                 <div class="profiles-container collapse">
                     <div class="profiles-expanded">
-                        Search<br>
-                        Profile<br>
-                        profile<br>
+                        <input class="profile-search" type="text" placeholder="Search...">
+                        <ul>
+                            <li>John</li>
+                        </ul>
                     </div>
                 </div>
             </div>
