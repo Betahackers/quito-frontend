@@ -10,7 +10,7 @@
 
   $('#happy').on('click', function (e) {
     console.log("click hello man.")
-    fetchMarker();
+    fetchMarker("happy");
   })
 
   $('#love').on('click', function (e) {
@@ -58,8 +58,10 @@
     QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
   })
 
-  function fetchMarker() {
-    var jqxhr = $.get("/json/markers.json", function (data) {
+  function fetchMarker(markerType) {
+
+
+    var jqxhr = $.get("http://127.0.0.1:9292/www.fromto.es/v1/articles.json", function (data) {
       console.log("success");
       QuitoFrontend.markers = data
       var markers = new QuitoFrontend.Collections.MarkerCollection(QuitoFrontend.markers)
@@ -89,11 +91,12 @@
           displayProfileView(model)
         });
       }
-    })
+    }
+    )
       .done(function () {
         console.log("second success");
       })
-      .fail(function () {
+      .fail(function (e) {
         console.log("error");
       })
       .always(function () {
