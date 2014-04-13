@@ -122,7 +122,7 @@
         var markerDot = new google.maps.Marker({
             position: new google.maps.LatLng(marker.latitude, marker.longitude),
             map: QuitoFrontend.map,
-            icon: 'marker-images/point_moods.png',
+            icon: 'marker-images/point_' + type + '.png',
             marker: marker
         });
         
