@@ -79,7 +79,8 @@ body {
 }
 
 .filter-moods {
-    background-color: rgba(85, 197, 192, 1);
+/*    background-color: rgba(85, 197, 192, 1);*/
+    background-color: #49c4c1;
 }
 
 .filter-categories {
@@ -134,7 +135,7 @@ body {
     right: 0;
     width: 220px;
     height: 100vh;
-    background-color: rgb(53, 174, 255);
+    background-color: rgba(85, 197, 192, 1);
     color: white;
     box-shadow: -1px 0px 10px 1px #aaaaaa;
 
@@ -156,8 +157,8 @@ body {
 .profile-header > hr {
     margin-top: 10px;
     height: 1px;
-    background-color: rgb(174, 223, 255);
-    color: rgb(174, 223, 255);
+    background-color: white;
+    opacity: 0.5;
     border: 0px;
 }
 
@@ -209,7 +210,7 @@ body {
 }
 
 .profile-content {
-    background-color: rgb(174, 223, 255);
+    background-color: #66e7e6;
     color: black;
     padding: 15px 12px;
     font-size: 11px;
@@ -224,23 +225,3 @@ body {
     text-transform: uppercase;
 }
 
-
-/** END PROFILE AREA **/
-
-
-/*#filter-container>a:hover {*/
-    /*text-decoration: none;*/
-/*}*/
-
-/*#filter-container>ul {*/
-    /*list-style: none;*/
-    /*background-color: #f08080;*/
-    /*padding-left: 0;*/
-    /*font-size: 32px;*/
-    /*color: white;*/
-    /*padding-left: 20px;*/
-/*}*/
-
-/*#filter-container li {*/
-    /*margin-bottom: 5px;*/
-/*}*/

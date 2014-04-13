@@ -22,7 +22,8 @@
   QuitoFrontend.addRegions({
     headerRegion:"header",
     mainRegion:"#content",
-    profileListRegion:"#profilesList"
+    profileListRegion:"#profilesList",
+    moodListRegion: "#moodsList"
   });
 
 
@@ -59,6 +60,19 @@
         }}
     )
 
+    QuitoFrontend.MoodList = new QuitoFrontend.Collections.MoodCollection()
+    QuitoFrontend.MoodList.fetch (
+      {
+        success: function(collection, response, options) {
+          console.log("mood count: " + collection.length);
+          QuitoFrontend.MoodListView = new QuitoFrontend.Views.MoodListView({collection:QuitoFrontend.MoodList,itemView : QuitoFrontend.Views.MoodItemView});
+          QuitoFrontend.moodListRegion.show(QuitoFrontend.MoodListView)
+        },
+        error: function (p1, p2) {
+            console.log("ERROR!!! ", p1, p2);
+        }
+    }
+    )
 
   });
 
