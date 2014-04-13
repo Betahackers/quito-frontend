@@ -27,28 +27,50 @@
 
         <div id="content">
         </div>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <a class="navbar-brand" href="#">Fromto</a>
+        </nav>
+
         <div id="map-canvas">
         </div>
 
         <div id="filter-container">
-            <a href="#" data-toggle="collapse" data-target="#moods">Mood</a>
-            <ul id="moods" class="collapse">
-                <li id="happy">Happy</li>
-                <li id="love">In love</li>
-                <li id="sad">Sad</li>
-                <li id="anx">Anxious</li>
-                <li id="despair">We're never gonna make it!</li>
-            </ul>
+            <div class="filter-box filter-moods">
+                <a id="moodsDropdown" href="#" data-toggle="collapse" data-target="#moods">Mood</a>
+                <ul id="moods" class="collapse">
+                    <li id="happy"><a href="#">Happy</a></li>
+                    <li><a href="#">In love</a></li>
+                    <li><a href="#">Sad</a></li>
+                    <li><a href="#">Panicking</a></li>
+                </ul>
+            </div>
 
-            <a href="#" data-toggle="collapse" data-target="#categories">Category</a>
-            <ul id="categories" class="collapse">
-                <li id="arch">Architecture</li>
-                <li id="night">Nightlife</li>
-                <li id="restau">Restaurants</li>
-            </ul>
+            <div class="filter-box filter-categories">
+                <a id="categoriesDropdown" href="#" data-toggle="collapse" data-target="#categories">Category</a>
+                <ul id="categories" class="collapse">
 
+                    <li><a href="#">Eat</a></li>
+                    <li><a href="#">Drink</a></li>
+                    <li><a href="#">Healthy Life</a></li>
+                    <li><a href="#">Culture</a></li>
+                    <li><a href="#">Shopping</a></li>
+                    <li><a href="#">Dancing</a></li>
+                    <li><a href="#">Live Music</a></li>
+                    <li><a href="#">Walks</a></li>
+                </ul>
+            </div>
+
+            <div class="profiles-box">
+                <a id="profilesLink" href="#">Profiles</a>
+                <div class="profiles-container collapse">
+                    <div class="profiles-expanded">
+                        Search<br>
+                        Profile<br>
+                        profile<br>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="info" style="display: none;">I am an alien.</div>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

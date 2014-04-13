@@ -10,37 +10,7 @@
 
   $('#happy').on('click', function (e) {
     console.log("click hello man.")
-
-//    var markers = [
-//      {
-//        latitude: 41.390412,
-//        longitude: 2.157952,
-//        title: 'Espito Chupitos'
-//      },
-//      {
-//        latitude: 41.385244,
-//        longitude: 2.169797,
-//        title: "L'oveja Negra"
-//      },
-//      {
-//        latitude: 41.382555,
-//        longitude: 2.163403,
-//        title: "Fabrica Moritz"
-//      }
-//    ];
-
-//    QuitoFrontend.markers = null;
-//    $.get( '/json/markers.json', function( data ) {
-//      alert( "Load was performed." );
-//      QuitoFrontend.markers = data;
-//    });
-
     fetchMarker();
-    var model = new QuitoFrontend.Models.Profile();
-    model.set("name","Jorge")
-    model.set("desc","He is a smart fella")
-    QuitoFrontend.ProfileView = new QuitoFrontend.Views.ProfileView({selectedProfile:"Jorge", model:model});
-    QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
   })
 
   $('#love').on('click', function (e) {
@@ -112,7 +82,11 @@
         // Add the circle for this city to the map.
         var circle = new google.maps.Circle(populationOptions);
         google.maps.event.addListener(circle, 'click', function () {
-          alert("hey");
+          console.log("hey");
+          var model = new QuitoFrontend.Models.Profile();
+          model.set("name","Architecture")
+          model.set("desc","Dancing about Architecture")
+          displayProfileView(model)
         });
       }
     })
@@ -125,4 +99,10 @@
       .always(function () {
         console.log("finished");
       });
+  }
+
+  function displayProfileView(model) {
+
+    QuitoFrontend.ProfileView = new QuitoFrontend.Views.ProfileView({selectedProfile:"Jorge", model:model});
+    QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
   }
