@@ -134,55 +134,39 @@
           // http://www.fromto.es/v1/locations/1.json
           var articleList = []
           var articles = this.marker.articles;
+          var model = new QuitoFrontend.Models.Profile();
+          var foursquare = {};
           var article = this.marker.articles[0]
-          var articleId = article.id;
-          url = "http://" + Config.DevProxy + "www.fromto.es/v1/articles/" + articleId + ".json"
-          var jqxhr = $.get(url, function (data) {
-            console.log("success");
-
-            var model = new QuitoFrontend.Models.Profile();
-            model.set("firstName",data.article.user.first_name)
-            model.set("lastName",data.article.user.last_name)
-            model.set("article",data.article)
-            model.set("moods",data.article.moods)
-//            model.set("desc","Dancing about Architecture")
+          if (typeof article !== 'undefined') {
+            var articleId = article.id;
+            url = "http://" + Config.DevProxy + "www.fromto.es/v1/articles/" + articleId + ".json"
+            var jqxhr = $.get(url, function (data) {
+              console.log("success");
+              model.set("firstName",data.article.user.first_name)
+              model.set("lastName",data.article.user.last_name)
+              model.set("article",data.article)
+              model.set("moods",data.article.moods)
+              //220x120
+//            width220
+              var photoUrlOrig = data.article.locations[0].foursquare_fields.photos.groups[0].items[1].prefix + "width220" + data.article.locations[0].foursquare_fields.photos.groups[0].items[1].suffix
+              var photoUrlArr = photoUrlOrig.split("://");
+              var photoUrl = ""
+              if (Config.DevProxy.length > 0) {
+                photoUrl = "http://" + Config.DevProxy + photoUrlArr[1]
+              } else {
+                photoUrl = photoUrlOrig
+              }
+              foursquare.photoUrl = photoUrl;
+              foursquare.name = data.article.locations[0].foursquare_fields.name;
+              model.set("foursquare",foursquare)
+              displayProfileView(model)
+            })
+          } else {
+            foursquare.name = this.marker.name
+            foursquare.id = this.marker.foursquare_id
+            model.set("foursquare",foursquare)
             displayProfileView(model)
-
-          })
-
-
-//          QuitoFrontend.ArticleList = new QuitoFrontend.Collections.ArticleCollection()
-//          QuitoFrontend.ArticleList.fetch (
-//            {
-//              success: function(collection, response, options) {
-//                console.log("item count: " + collection.length);
-////                QuitoFrontend.ProfileListView = new QuitoFrontend.Views.ProfileListView({collection:QuitoFrontend.ProfileList,itemView : QuitoFrontend.Views.ProfileItemView});
-////                QuitoFrontend.profileListRegion.show(QuitoFrontend.ProfileListView)
-////                var model = new QuitoFrontend.Models.Profile({url:"http://QuitoFrontendwww.fromto.es/v1/locations/1.json"});
-//                var model = new QuitoFrontend.Models.Profile();
-////                model.set("name",this.marker.name)
-//                model.set("articles",QuitoFrontend.ArticleList)
-//                model.set("desc","Dancing about Architecture")
-//                displayProfileView(model)
-//              }}
-//          )
-
-
-//          for (var i = 0; i < articles.length; i++) {
-//            var article = article[i];
-//            var articleId = article
-//            var jqxhr = $.get("http://QuitoFrontendwww.fromto.es/v1/locations.json", function (data) {
-//
-//              var model = new QuitoFrontend.Models.Profile({url:"http://www.fromto.es/v1/locations/1.json"});
-//              model.set("name",this.marker.name)
-//              model.set("articles",articleList)
-//              model.set("desc","Dancing about Architecture")
-//              displayProfileView(model)
-//
-//            })
-//          }
-
-
+          }
         });
       }
     }

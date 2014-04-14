@@ -4,7 +4,7 @@
 			<img class="profile-image" src="http://placehold.it/40x40" />
 		</div>
 		<div class="profile-people-name">
-     {{lastName}}
+     {{firstName}} {{lastName}}
 		</div>
 		<div class="profile-people-text">
       {{desc}}
@@ -15,13 +15,11 @@
     {{desc}}
 	</div>
 	<div class="profile-location">
-		Bogota, Colombia
 	</div>
 	<div class="profile-work">
-		Graphic Designer
 	</div>
 	<div class="profile-picture">
-		<img class="image" src="http://placehold.it/220x120" />
+		<img class="image" src="{{foursquare.photoUrl}}" />
 	</div>
 	<div class="profile-content">
 		<!--<h1>Parc Güell</h1>-->
@@ -29,7 +27,8 @@
 			<!--Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.-->
 		<!--</p>-->
 
-      <h1>{{article.title}}</h1>
+      <h1>{{foursquare.name}}</h1>
+      <h2>{{article.title}}</h2>
       <p>{{article.content}}</p>
   <p>
     {{#each moods}}

@@ -19,4 +19,10 @@ Remove the proxy url from the ajax requests: "127.0.0.1:9292/"
 
     var jqxhr = $.get("http://127.0.0.1:9292/rawgit.com/Betahackers/quito-backend/master/examples/locations.json", function (data) {
 
+    //Config.DevProxy = "127.0.0.1:9292/";
+    Config.DevProxy = "";
+
+To deploy, run grunt deploy. This will generate the templates.js file and minimise the javascript. That task can do a lot more - see
+grunt.registerTask in Gruntfile.js
+
 
