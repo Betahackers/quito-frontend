@@ -203,7 +203,8 @@ module.exports = function (grunt) {
                       'marker-images/{,*/}*.*',
                       'mood_images/{,*/}*.*',
                       'splash_images/{,*/}*.*',
-                      'fromto.png'
+                      'fromto.png',
+                      'fromtotransparency-white.png'
                     ]
                 }]
             }
