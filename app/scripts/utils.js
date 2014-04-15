@@ -110,17 +110,16 @@
       //var markers = new QuitoFrontend.Collections.MarkerCollection(QuitoFrontend.markers)
       QuitoFrontend.markers = data.locations;
 
-        var model = new QuitoFrontend.Models.Profile();
-        if (typeof QuitoFrontend.markers[0].location.articles !== 'undefined') {
-          var user = QuitoFrontend.markers[0].location.articles[0].article.user;
-          var userThumbnailUrl = "http://www.fromto.es/images/fallback/thumb_avatar.jpg";
-          if (user.avatar_url_suffix !== "avatar.jpg") {
-            userThumbnailUrl = "http://www.fromto.es" + data.article.user.avatar_url_prefix + data.article.user.avatar_url_suffix;
-          }
-          model.set("user",user)
-          model.set("userThumbnailUrl",userThumbnailUrl)
-
-          if (type === 'by_user') {
+        if (type === 'by_user') {
+          var model = new QuitoFrontend.Models.Profile();
+          if ((typeof QuitoFrontend.markers[0].location.articles !== 'undefined') && (QuitoFrontend.markers[0].location.articles.length > 0)) {
+            var user = QuitoFrontend.markers[0].location.articles[0].article.user;
+            var userThumbnailUrl = "http://www.fromto.es/images/fallback/thumb_avatar.jpg";
+            if (user.avatar_url_suffix !== "avatar.jpg") {
+              userThumbnailUrl = "http://www.fromto.es" + data.article.user.avatar_url_prefix + data.article.user.avatar_url_suffix;
+            }
+            model.set("user",user)
+            model.set("userThumbnailUrl",userThumbnailUrl)
             displayProfileView(model)
           }
         }

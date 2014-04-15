@@ -25,6 +25,7 @@ QuitoFrontend.Views = QuitoFrontend.Views || {};
 //      var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
       initializeMap()
+      fetchMarker("home","all");
     },
     showPanel: function(e) {
       console.log("showing profile panel.")
