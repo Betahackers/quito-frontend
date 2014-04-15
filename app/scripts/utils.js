@@ -88,20 +88,30 @@
     fetchMarker("alternative","by_category");
   })
 
+    $(function () {
+        // Get this now, when the menus are collapsed.
+        QuitoFrontend.profilesButtonTop = $(".profiles-box").offset().top;
+    });
 
-  $("#profilesLink").click(function () {
-    if (!$(".profiles-container").hasClass("in")) {
-      var windowHeight = $(window).height();
-      var boxTop = $(".profiles-box").offset().top;
-      var boxHeight = $(".profiles-box").outerHeight();
-      var newHeight = windowHeight - (boxTop + boxHeight);
-      $(".profiles-expanded").css("height", newHeight + "px");
-    }
+    $(".sidebar-box a").click(function () {
+        var collapsibleChild = $(this).parent().find(".collapse");
+                
+        if ($(this).parent().hasClass("profiles-box")) {
+            if (!$(".profiles-container").hasClass("in")) {
+                var windowHeight = $(window).height();
+                var boxTop = QuitoFrontend.profilesButtonTop;
+                var boxHeight = $(".profiles-box").outerHeight();
+                var newHeight = windowHeight - (boxTop + boxHeight);
+                $(".profiles-expanded").css("height", newHeight + "px");
+            }
+        }
 
-    $(".profiles-container").collapse("toggle");
-  });
+        collapsibleChild.collapse("toggle");
+        $(".collapse.in").not(collapsibleChild).collapse("hide");
+    });
 
   function fetchMarker(markerType, type) {
+    
     $('#ProfileArticlePanel').hide()
     if (type === 'by_mood') {
       //background-color: #49c4c1;
