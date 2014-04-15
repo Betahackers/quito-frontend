@@ -20,6 +20,7 @@ QuitoFrontend.Views = QuitoFrontend.Views || {};
       console.log("display profile")
       var profile = new QuitoFrontend.Models.Profile();
       var model = this.model;
+      profile.set("id",model.get("id"))
       profile.set("firstName",model.get("first_name"))
       profile.set("lastName",model.get("last_name"))
       profile.set("profession",model.get("profession"))
@@ -28,11 +29,14 @@ QuitoFrontend.Views = QuitoFrontend.Views || {};
       profile.set("expert_in",model.get("expert_in"))
       if (model.get("articles") !== null) {
         var articles = model.get("articles")
-        profile.set("article", articles.article)
+        if (articles.length > 0) {
+          profile.set("article", articles[0].article)
+        }
       }
 
       var userId = model.get("id")
       displayProfileView(profile)
+      fetchMarker(userId,"by_user")
 //      fetchMarker(userId,"users");
     },
     destroy : function() {

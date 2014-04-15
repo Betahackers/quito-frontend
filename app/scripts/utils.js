@@ -18,70 +18,74 @@
 
   $('#Illegal').on('click', function (e) {
     console.log("click Illegal man.")
-    fetchMarker("Illegal","mood");
+    fetchMarker("lawbreaker","by_mood");
   })
   $('#Sociable').on('click', function (e) {
     console.log("click Sociable man.")
-    fetchMarker("Sociable","mood");
+    fetchMarker("social","by_mood");
   })
   $('#Adventure').on('click', function (e) {
     console.log("click Adventure man.")
-    fetchMarker("Adventure","mood");
+    fetchMarker("adventurous","by_mood");
   })
   $('#Active').on('click', function (e) {
     console.log("click Active man.")
-    fetchMarker("Active","mood");
+    fetchMarker("energetic","by_mood");
   })
   $('#Cultural').on('click', function (e) {
     console.log("click Cultural man.")
-    fetchMarker("Cultural","mood");
+    fetchMarker("intellectual","by_mood");
   })
   $('#Romantic').on('click', function (e) {
     console.log("click Romantic man.")
-    fetchMarker("Romantic","mood");
+    fetchMarker("romantic","by_mood");
   })
   $('#Relaxed').on('click', function (e) {
     console.log("click Relaxed man.")
-    fetchMarker("Relaxed","mood");
+    fetchMarker("relaxed","by_mood");
   })
   $('#Solitary').on('click', function (e) {
     console.log("click Solitary man.")
-    fetchMarker("Solitary","mood");
+    fetchMarker("lonely","by_mood");
   })
 
 //  {"categories":["Eat","Drink","Healthy Life","Culture","Shopping","Dancing","Live Music","Walks"],
 
   $('#Eat').on('click', function (e) {
     console.log("click Eat man.")
-    fetchMarker("Eat","categories");
+    fetchMarker("food","by_category");
   })
   $('#Drink').on('click', function (e) {
     console.log("click Drink man.")
-    fetchMarker("Drink","categories");
+    fetchMarker("drinks","by_category");
   })
   $('#HealthyLife').on('click', function (e) {
     console.log("click Healthy Life man.")
-    fetchMarker("Healthy Life","categories");
+    fetchMarker("healthy_life","by_category");
   })
   $('#Culture').on('click', function (e) {
     console.log("click Culture man.")
-    fetchMarker("Culture","categories");
+    fetchMarker("culture","by_category");
   })
   $('#Shopping').on('click', function (e) {
     console.log("click Shopping man.")
-    fetchMarker("Shopping","categories");
+    fetchMarker("shopping","by_category");
   })
   $('#Dancing').on('click', function (e) {
     console.log("click Dancing man.")
-    fetchMarker("Dancing","categories");
+    fetchMarker("dancing","by_category");
   })
   $('#LiveMusic').on('click', function (e) {
     console.log("click Live Music man.")
-    fetchMarker("Live Music","categories");
+    fetchMarker("music","by_category");
   })
   $('#Walks').on('click', function (e) {
     console.log("click Walks man.")
-    fetchMarker("Walks","categories");
+    fetchMarker("have_a_stroll","by_category");
+  })
+  $('#alternative').on('click', function (e) {
+    console.log("click alternative man.")
+    fetchMarker("alternative","by_category");
   })
 
 
@@ -98,7 +102,7 @@
   });
 
   function fetchMarker(markerType, type) {
-    var url = "http://" + Config.DevProxy + "www.fromto.es/v1/locations.json?"+type+"=" + markerType + "&include_articles=true"
+    var url = "http://" + Config.DevProxy + "www.fromto.es/v2/locations.json?"+type+"=" + markerType + "&include_articles=true"
     var jqxhr = $.get(url, function (data) {
       console.log("success");
       QuitoFrontend.markers = data
@@ -138,8 +142,8 @@
           var foursquare = {};
           var article = this.marker.articles[0]
           if (typeof article !== 'undefined') {
-            var articleId = article.id;
-            url = "http://" + Config.DevProxy + "www.fromto.es/v1/articles/" + articleId + ".json"
+            var articleId = article.article.id;
+            url = "http://" + Config.DevProxy + "www.fromto.es/v2/articles/" + articleId + ".json?include_foursquare=true"
             var jqxhr = $.get(url, function (data) {
               console.log("success");
               model.set("firstName",data.article.user.first_name)
@@ -148,7 +152,8 @@
               model.set("moods",data.article.moods)
               //220x120
 //            width220
-              var photoUrlOrig = data.article.locations[0].foursquare_fields.photos.groups[0].items[1].prefix + "width220" + data.article.locations[0].foursquare_fields.photos.groups[0].items[1].suffix
+              var photosTree = data.article.locations[0].location.foursquare.photos.groups[0].items[1]
+              var photoUrlOrig = photosTree.prefix + "width220" + photosTree.suffix
               var photoUrlArr = photoUrlOrig.split("://");
               var photoUrl = ""
               if (Config.DevProxy.length > 0) {
@@ -157,7 +162,7 @@
                 photoUrl = photoUrlOrig
               }
               foursquare.photoUrl = photoUrl;
-              foursquare.name = data.article.locations[0].foursquare_fields.name;
+              foursquare.name = data.article.locations[0].location.foursquare.name;
               model.set("foursquare",foursquare)
               displayProfileView(model)
             })
@@ -172,13 +177,13 @@
     }
     )
       .done(function () {
-        console.log("second success");
+//        console.log("second success");
       })
       .fail(function (e) {
         console.log("error");
       })
       .always(function () {
-        console.log("finished");
+//        console.log("finished");
       });
   }
 
