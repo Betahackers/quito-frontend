@@ -102,6 +102,7 @@
   });
 
   function fetchMarker(markerType, type) {
+    $('#ProfileArticlePanel').hide()
     var url = "http://" + Config.DevProxy + "www.fromto.es/v2/locations.json?"+type+"=" + markerType + "&include_articles=true"
     var jqxhr = $.get(url, function (data) {
       console.log("success");
@@ -133,7 +134,6 @@
         QuitoFrontend.markerDots.push(markerDot);
 
         google.maps.event.addListener(markerDot, 'click', function () {
-          console.log("hey");
           // http://www.fromto.es/v1/articles/1.json
           // http://www.fromto.es/v1/locations/1.json
           var articleList = []
