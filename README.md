@@ -13,7 +13,7 @@ In development use corsproxy to work around CORS issues. wiki: [CORS](http://en.
     corsproxy (in another shell)
     grunt serve
 
-# Deployment
+# Prepare the build
 
 Remove the proxy url from the ajax requests: "127.0.0.1:9292/"
 
@@ -31,5 +31,26 @@ cd to dist
     http-server .
 
 The you can test it out on http://localhost:8080/app.html
+
+# Deploy to heraku
+
+Clone the keraku repository:
+
+    heroku git:clone --app quito-backend
+
+The app is deployed in the quito-backend/public.
+
+If you're updating the app, do a git pull first!
+
+    git pull
+
+If only javascript was changed, you typically only need to copy one js file from scripts and delete the old version on heraku.
+
+    git status
+    git add -A
+    git commit -a -m "Updates to Profiles and added Itineraries"
+    git push heroku master
+
+TBD - automate this!
 
 

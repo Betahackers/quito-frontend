@@ -204,7 +204,8 @@ module.exports = function (grunt) {
                       'mood_images/{,*/}*.*',
                       'splash_images/{,*/}*.*',
                       'fromto.png',
-                      'fromtotransparency-white.png'
+                      'fromtotransparency-white.png',
+                      'itineraries/{,*/}*.*',
                     ]
                 }]
             }
