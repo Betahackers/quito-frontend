@@ -127,6 +127,11 @@ body {
     width: 28px;
 }
 
+.itineraries-box {
+    /*    background-color: rgba(109, 151, 203, 1);*/
+    background-color: #6d97cb;
+}
+
 #about-button {
     z-index: 1;
     position: absolute;
