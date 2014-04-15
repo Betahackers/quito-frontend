@@ -5,7 +5,7 @@ QuitoFrontend.Views = QuitoFrontend.Views || {};
 (function () {
   'use strict';
 
-  QuitoFrontend.Views.ProfileItemView =  Backbone.Marionette.CompositeView.extend({
+  QuitoFrontend.Views.ProfileItemView =  Backbone.Marionette.ItemView.extend({
     tagName : 'li',
     template: JST['app/scripts/templates/ProfileItemView.hbs'],
 
