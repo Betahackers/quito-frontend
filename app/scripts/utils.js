@@ -103,6 +103,20 @@
 
   function fetchMarker(markerType, type) {
     $('#ProfileArticlePanel').hide()
+    if (type === 'by_mood') {
+      //background-color: #49c4c1;
+      $('.profile').css("background-color","#49c4c1");
+    } else if (type === 'by_category') {
+      //background-color: rgba(154,147,210,1);
+      $('.profile').css("background-color","rgba(154,147,210,1)");
+    } else  if (type === 'by_user') {
+      //background-color: rgba(147,204,58,1);
+      $('.profile').css("background-color","rgba(147,204,58,1)");
+    } else  {
+        //background-color: #6d97cb;
+      $('.profile').css("background-color","#6d97cb");
+    }
+
     var url = "http://" + Config.DevProxy + "www.fromto.es/v2/locations.json?"+type+"=" + markerType + "&include_articles=true"
     var jqxhr = $.get(url, function (data) {
       console.log("success");
