@@ -184,10 +184,11 @@ body {
 .profile-header {
     margin-top: 65px;
     padding: 12px;
+    padding: 12px 12px 0px 12px;
 }
 
 .profile-header > hr {
-    margin-top: 10px;
+    margin-top: 28px;
     height: 1px;
     background-color: white;
     opacity: 0.5;
@@ -203,6 +204,7 @@ body {
 
 .profile-image {
     border-radius: 50%;
+    width: 40px;
 }
 
 .profile-people-name {

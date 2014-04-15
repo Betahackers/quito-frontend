@@ -1,24 +1,24 @@
 <div id="ProfileArticlePanel" class="profile">
 	<div class="profile-header">
 		<div class="profile-people-img">
-			<img class="profile-image" src="http://placehold.it/40x40" />
+			<img class="profile-image" src="{{userThumbnailUrl}}" />
 		</div>
 		<div class="profile-people-name">
-     {{firstName}} {{lastName}}
+     {{user.first_name}} {{user.last_name}}
 		</div>
 		<div class="profile-people-text">
-      {{about}}
+      {{user.about}}
 		</div>
 		<hr/>
 	</div>
 	<div class="profile-description">
-    {{expert_in}}
+    {{user.expert_in}}
 	</div>
 	<div class="profile-location">
-      {{nationality}}
+      {{user.nationality}}
 	</div>
 	<div class="profile-work">
-    {{profession}}
+    {{user.profession}}
 	</div>
 	<div class="profile-picture">
 		<img class="image" src="{{foursquare.photoUrl}}" />

@@ -13,6 +13,12 @@ In development use corsproxy to work around CORS issues. wiki: [CORS](http://en.
     corsproxy (in another shell)
     grunt serve
 
+# Development
+
+To use the corsproxy-enabled url in your code, insert Config.DevProxy into your urls:
+
+    var url = "http://" + Config.DevProxy + "www.fromto.es/v2/locations.json?"+type+"=" + markerType + "&include_articles=true"
+
 # Prepare the build
 
 Remove the proxy url from the ajax requests: "127.0.0.1:9292/"
