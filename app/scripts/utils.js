@@ -194,7 +194,7 @@
               model.set("moods",data.article.moods)
               //220x120
 //            width220
-              if (typeof data.article.locations === 'undefined') {
+              if (typeof data.article.locations !== 'undefined') {
                 var photosTree = data.article.locations[0].location.foursquare.photos.groups[0].items[1]
                 var photoUrlOrig = photosTree.prefix + "width220" + photosTree.suffix
                 var photoUrlArr = photoUrlOrig.split("://");
