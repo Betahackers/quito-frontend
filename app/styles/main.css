@@ -236,11 +236,20 @@ body {
 
 .profile-work {
     font-size: 10px;
+    padding-bottom: 10px;
 }
 
 .profile-twitter {
     font-size: 10px;
     font-weight: 700;
+}
+
+.profile-twitter a {
+    color: #ffffff;
+}
+
+.profile-url a {
+    color: #ffffff;
 }
 
 .profile-url {
