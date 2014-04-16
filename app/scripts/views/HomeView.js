@@ -16,7 +16,7 @@ QuitoFrontend.Views = QuitoFrontend.Views || {};
       console.log("hello.")
     },
     initialize : function() {
-      console.log("hello.")
+//      console.log("hello.")
 
 //      var mapOptions = {
 //        center: new google.maps.LatLng(41.39479, 2.1487679),

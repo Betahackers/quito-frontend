@@ -129,7 +129,7 @@
 
     var url = "http://" + Config.DevProxy + "www.fromto.es/v2/locations.json?"+type+"=" + markerType + "&include_articles=true"
     var jqxhr = $.get(url, function (data) {
-      console.log("success");
+//      console.log("success");
       //QuitoFrontend.markers = data
       //var markers = new QuitoFrontend.Collections.MarkerCollection(QuitoFrontend.markers)
       QuitoFrontend.markers = data.locations;
@@ -137,10 +137,19 @@
         if (type === 'by_user') {
           var model = new QuitoFrontend.Models.Profile();
           if ((typeof QuitoFrontend.markers[0].location.articles !== 'undefined') && (QuitoFrontend.markers[0].location.articles.length > 0)) {
-            var user = QuitoFrontend.markers[0].location.articles[0].article.user;
+            var user = null;
+            if (typeof QuitoFrontend.markers[0].location.articles[0].article !== 'undefined') {
+              user = QuitoFrontend.markers[0].location.articles[0].article.user;
+            } else {
+              // try the next one.
+              if (typeof QuitoFrontend.markers[0].location.articles[1].article !== 'undefined') {
+                user = QuitoFrontend.markers[0].location.articles[1].article.user;
+              }
+              console.log("Warning: the first article in this profile is empty. id: " + user.id + " name: " + user.first_name)
+            }
             var userThumbnailUrl = "http://www.fromto.es/images/fallback/thumb_avatar.png";
-            if (user.avatar_url_suffix !== "avatar.png") {
-              userThumbnailUrl = data.article.user.avatar_url_prefix + data.article.user.avatar_url_suffix;
+            if ((user != null) && (user.avatar_url_suffix !== "avatar.png")) {
+              userThumbnailUrl = user.avatar_url_prefix + user.avatar_url_suffix;
             }
             model.set("user",user)
             model.set("userThumbnailUrl",userThumbnailUrl)
@@ -180,7 +189,7 @@
             var articleId = article.article.id;
             url = "http://" + Config.DevProxy + "www.fromto.es/v2/articles/" + articleId + ".json?include_foursquare=true"
             var jqxhr = $.get(url, function (data) {
-              console.log("success");
+//              console.log("success");
               model.set("user",data.article.user)
               // 			<img class="profile-image" src="http://www.fromto.es{{user.avatar_url_prefix}}{{user.avatar_url_suffix}}" />
               var userThumbnailUrl = "http://www.fromto.es/images/fallback/thumb_avatar.png";

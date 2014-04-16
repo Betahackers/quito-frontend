@@ -7,13 +7,13 @@
 
     //gets mapped to in AppRouter's appRoutes
     index:function () {
-      console.log("i am index");
+//      console.log("i am index");
 
       QuitoFrontend.HomeView = new QuitoFrontend.Views.HomeView();
       QuitoFrontend.mainRegion.show(QuitoFrontend.HomeView)
     },
     home:function () {
-      console.log("i am home");
+//      console.log("i am home");
 
       QuitoFrontend.HomeView = new QuitoFrontend.Views.HomeView();
       QuitoFrontend.mainRegion.show(QuitoFrontend.HomeView)
