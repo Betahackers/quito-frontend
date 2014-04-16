@@ -21,11 +21,11 @@
     {{user.profession}}
 	</div>
   <div class="profile-twitter">
-    <a href="twitter.com/{{user.twitter_handle}}">{{user.twitter_handle}}</a>
+    <a href="twitter.com/{{user.twitter_handle}}" target="_blank">{{user.twitter_handle}}</a>
 	</div>
-    <div class="profile-url">
-        <a href="{{user.website_url}}">website</a>
-    </div>
+  <div class="profile-url">
+      <a href="{{user.website_url}}" target="_blank">website</a>
+  </div>
 	<div class="profile-picture">
     {{#if foursquare.photoUrl}}
 		<img class="image" src="{{foursquare.photoUrl}}" id="profile-image"/>
