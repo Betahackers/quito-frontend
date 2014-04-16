@@ -17,7 +17,7 @@ In development use corsproxy to work around CORS issues. wiki: [CORS](http://en.
 
 To use the corsproxy-enabled url in your code, insert Config.DevProxy into your urls:
 
-    var url = "http://" + Config.DevProxy + "www.fromto.es/v2/locations.json?"+type+"=" + markerType + "&include_articles=true"
+    var url = "http://" + Config.DevProxy + "www.fromto.es/v2/locations.json?"+type+"=" + markerType
 
 # Prepare the build
 

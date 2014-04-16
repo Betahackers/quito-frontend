@@ -127,7 +127,7 @@
       $('.profile').css("background-color","#6d97cb");
     }
 
-    var url = "http://" + Config.DevProxy + "www.fromto.es/v2/locations.json?"+type+"=" + markerType + "&include_articles=true"
+    var url = "http://" + Config.DevProxy + "www.fromto.es/v2/locations.json?"+type+"=" + markerType;
     var jqxhr = $.get(url, function (data) {
 //      console.log("success");
       //QuitoFrontend.markers = data
@@ -204,17 +204,22 @@
               //220x120
 //            width220
               if (typeof data.article.locations !== 'undefined') {
-                var photosTree = data.article.locations[0].location.foursquare.photos.groups[0].items[1]
-                var photoUrlOrig = photosTree.prefix + "width220" + photosTree.suffix
-                var photoUrlArr = photoUrlOrig.split("://");
-                var photoUrl = ""
-                if (Config.DevProxy.length > 0) {
-                  photoUrl = "http://" + Config.DevProxy + photoUrlArr[1]
-                } else {
-                  photoUrl = photoUrlOrig
-                }
-                foursquare.photoUrl = photoUrl;
                 foursquare.name = data.article.locations[0].location.foursquare.name;
+                foursquare.canonicalUrl = data.article.locations[0].location.foursquare.canonicalUrl;
+                if (data.article.locations[0].location.foursquare.photos.groups.length > 0) {
+                  var photosTree = data.article.locations[0].location.foursquare.photos.groups[0].items[0]
+                  var photoUrlOrig = photosTree.prefix + "width220" + photosTree.suffix
+                  var photoUrlArr = photoUrlOrig.split("://");
+                  var photoUrl = ""
+                  if (Config.DevProxy.length > 0) {
+                    photoUrl = "http://" + Config.DevProxy + photoUrlArr[1]
+                  } else {
+                    photoUrl = photoUrlOrig
+                  }
+                  foursquare.photoUrl = photoUrl;
+                } else {
+                  console.log("No image for " + data.article.locations[0].location.foursquare.canonicalUrl)
+                }
                 model.set("foursquare",foursquare)
               }
               displayProfileView(model)
