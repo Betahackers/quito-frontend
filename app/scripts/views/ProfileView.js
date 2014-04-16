@@ -15,7 +15,12 @@ QuitoFrontend.Views = QuitoFrontend.Views || {};
     helloworld: function() {
       console.log("ProfileView.")
     },
-    selectedProfile: null
+    selectedProfile: null,
+
+    onShow: function(){
+      var profilePanelBackgroundColor = this.model.get("profilePanelBackgroundColor")
+      $('.profile').css("background-color",profilePanelBackgroundColor);
+    }
 
   });
 

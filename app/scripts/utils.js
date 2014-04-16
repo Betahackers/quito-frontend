@@ -110,23 +110,27 @@
         $(".collapse.in").not(collapsibleChild).collapse("hide");
     });
 
+  function getProfilePanelBackgroundColor(type) {
+    var bgcolor = ""
+    if (type === 'by_mood') {
+      //background-color: #49c4c1;
+      bgcolor = "#49c4c1";
+    } else if (type === 'by_category') {
+      //background-color: rgba(154,147,210,1);
+      bgcolor = "rgba(154,147,210,1)";
+    } else if (type === 'by_user') {
+      //background-color: rgba(147,204,58,1);
+      bgcolor = "rgba(147,204,58,1)";
+    } else {
+      //background-color: #6d97cb;
+      bgcolor = "#6d97cb";
+    }
+    return bgcolor;
+  }
   function fetchMarker(markerType, type) {
     
     $('#ProfileArticlePanel').hide()
-    if (type === 'by_mood') {
-      //background-color: #49c4c1;
-      $('.profile').css("background-color","#49c4c1");
-    } else if (type === 'by_category') {
-      //background-color: rgba(154,147,210,1);
-      $('.profile').css("background-color","rgba(154,147,210,1)");
-    } else  if (type === 'by_user') {
-      //background-color: rgba(147,204,58,1);
-      $('.profile').css("background-color","rgba(147,204,58,1)");
-    } else  {
-        //background-color: #6d97cb;
-      $('.profile').css("background-color","#6d97cb");
-    }
-
+    var profilePanelBackgroundColor = getProfilePanelBackgroundColor(type);
     var url = "http://" + Config.DevProxy + "www.fromto.es/v2/locations.json?"+type+"=" + markerType;
     var jqxhr = $.get(url, function (data) {
 //      console.log("success");
@@ -136,6 +140,7 @@
 
         if (type === 'by_user') {
           var model = new QuitoFrontend.Models.Profile();
+          model.set("profilePanelBackgroundColor", profilePanelBackgroundColor);
           if ((typeof QuitoFrontend.markers[0].location.articles !== 'undefined') && (QuitoFrontend.markers[0].location.articles.length > 0)) {
             var user = null;
             if (typeof QuitoFrontend.markers[0].location.articles[0].article !== 'undefined') {
@@ -187,6 +192,7 @@
           var articleList = []
           var articles = this.marker.articles;
           var model = new QuitoFrontend.Models.Profile();
+          model.set("profilePanelBackgroundColor", profilePanelBackgroundColor);
           var foursquare = {};
           var article = this.marker.articles[0]
           if (typeof article !== 'undefined') {
