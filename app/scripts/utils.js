@@ -153,6 +153,10 @@
             }
             model.set("user",user)
             model.set("userThumbnailUrl",userThumbnailUrl)
+            var foursquare = {}
+            foursquare.photoUrl = userThumbnailUrl;
+            $('.profile-picture').css("width","240px");
+            model.set("foursquare",foursquare)
             displayProfileView(model)
           }
         }

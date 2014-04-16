@@ -20,15 +20,18 @@
 	<div class="profile-work">
     {{user.profession}}
 	</div>
+  <div class="profile-twitter">
+    <a href="twitter.com/{{user.twitter_handle}}">{{user.twitter_handle}}</a>
+	</div>
+    <div class="profile-url">
+        <a href="{{user.website_url}}">website</a>
+    </div>
 	<div class="profile-picture">
-		<img class="image" src="{{foursquare.photoUrl}}" />
+    {{#if foursquare.photoUrl}}
+		<img class="image" src="{{foursquare.photoUrl}}" id="profile-image"/>
+    {{/if}}
 	</div>
 	<div class="profile-content">
-		<!--<h1>Parc Güell</h1>-->
-		<!--<p>-->
-			<!--Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.-->
-		<!--</p>-->
-
       <h1><a href="{{foursquare.canonicalUrl}}" target="_blank">{{foursquare.name}}</a></h1>
       <h2>{{article.title}}</h2>
       <p>{{article.content}}</p>
