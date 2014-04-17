@@ -173,6 +173,10 @@ body {
 
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+.profile-inner {
+    min-height: 100vh;
 
     display: -webkit-flex;
     display: flex;
@@ -208,6 +212,7 @@ body {
 .profile-image {
     border-radius: 50%;
     width: 40px;
+    height: 40px;
 }
 
 .profile-people-name {
@@ -263,10 +268,6 @@ body {
 
 .profile-picture {
     height: 120px;
-}
-
-#profile-image {
-    width: 240px;
 }
 
 .profile-content {
