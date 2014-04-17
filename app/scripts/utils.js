@@ -179,12 +179,28 @@
         for (var i = 0; i < QuitoFrontend.markers.length; i++) {
           var marker = QuitoFrontend.markers[i].location
 
+          var markerImage = type;
+          if (type === 'all') {
+            var randomChoice = Math.floor(Math.random() * (3 - 1 + 1)) + 1
+            switch (randomChoice) {
+              case 1:
+                markerImage = "by_mood"
+                break;
+              case 2:
+                markerImage = "by_category"
+                break;
+              case 3:
+                markerImage = "by_user"
+                break;
+            }
+          }
+
           var markerDot = new google.maps.Marker({
             position: new google.maps.LatLng(marker.latitude, marker.longitude),
             map: QuitoFrontend.map,
-            icon: 'marker-images/point_' + type + '.png',
-            marker: marker,
-            animation: google.maps.Animation.DROP
+            icon: 'marker-images/point_' + markerImage + '.png',
+            marker: marker
+//            animation: google.maps.Animation.DROP
           });
 
           QuitoFrontend.markerDots.push(markerDot);

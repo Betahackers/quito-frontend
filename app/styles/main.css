@@ -285,3 +285,13 @@ body {
     text-transform: uppercase;
 }
 
+#moods ul li a img {
+    margin-right: 0.5em;
+    width: 20px;
+}
+
+#categories ul li a img {
+    margin-right: 0.5em;
+    width: 20px;
+}
+
