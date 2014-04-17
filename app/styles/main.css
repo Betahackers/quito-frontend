@@ -171,6 +171,9 @@ body {
     color: white;
     box-shadow: -1px 0px 10px 1px #aaaaaa;
 
+    overflow-x: hidden;
+    overflow-y: scroll;
+
     display: -webkit-flex;
     display: flex;
     -webkit-justify-content: space-between;
