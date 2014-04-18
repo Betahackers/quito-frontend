@@ -76,7 +76,7 @@ body {
     line-height: 2;
     margin-top: 10px;
     padding-top: 9px;
-    padding-left: 16px;
+    padding-left: 5px;
 }
 
 .filter-moods {
@@ -287,11 +287,20 @@ body {
 
 #moods ul li a img {
     margin-right: 0.5em;
-    width: 20px;
+    width: 30px;
 }
 
 #categories ul li a img {
     margin-right: 0.5em;
-    width: 20px;
+    width: 30px;
+}
+
+.profileItem a img {
+    margin-right: 5px;
+    width: 30px;
+}
+
+.profileItem li {
+    margin-right: 0.5em;
 }
 
