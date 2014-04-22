@@ -1,21 +1,28 @@
 Betaguide front-end
 ==============
 
-#Setup 
+# Setup
 
     npm install
     bower install
 
-In development use corsproxy to work around CORS issues. wiki: [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
+In development use corsproxy to work around [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) issues.
+All of the URLS's that make AJAX requests should pass through the cors proxy in order to work.
+
     npm install -g corsproxy
 
-#Run
+# Configure
+
+Open app/scripts/config.js and uncomment the following line in order to use the cors proxy.
+    //Config.DevProxy = "127.0.0.1:9292/";
+
+# Run
     corsproxy (in another shell)
     grunt serve
 
 # Development
 
-To use the corsproxy-enabled url in your code, insert Config.DevProxy into your urls:
+To use the corsproxy-enabled url in your code, insert Config.DevProxy into the urls that make AJAX requests.
 
     var url = "http://" + Config.DevProxy + "www.fromto.es/v2/locations.json?"+type+"=" + markerType
 
