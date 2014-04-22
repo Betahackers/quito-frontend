@@ -1,4 +1,4 @@
-Betaguide front-end
+fromto.es front-end
 ==============
 
 This project is for the front-end for the fromto.es website. We used [generator-backbone](https://github.com/yeoman/generator-backbone)
@@ -12,19 +12,21 @@ install [yeoman](http://yeoman.io/index.html) - it automatically installs bower 
     npm install -g yo
 
 This app used the generator-backbone for yeoman to generate scaffolding. It is not necessary to install it if you're not
-creating any new backbone models, views, or collections.
+creating any new backbone models, views, or collections. If you are creating new models, there are some examples how to use this generator later in the document.
 
     npm install -g generator-backbone
-
-# Once you've cloned the source code, cd to the source and run these commands in order to install the dependencies:
-
-    npm install
-    bower install
 
 In development use corsproxy to work around [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) issues.
 All of the URLS's that make AJAX requests should pass through the cors proxy in order to work.
 
     npm install -g corsproxy
+
+# Install dependencies
+
+Once you've cloned the source code, cd to the source and run these commands in order to install the dependencies:
+
+    npm install
+    bower install
 
 # Configure
 
