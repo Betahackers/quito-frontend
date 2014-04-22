@@ -1,7 +1,22 @@
 Betaguide front-end
 ==============
 
-# Setup
+This project is for the front-end for the fromto.es website. We used [generator-backbone](https://github.com/yeoman/generator-backbone)
+to generate scaffolding and then modified some of views to use [Marionnette](http://marionettejs.com/) views.
+
+# Preparation
+
+Before building this app, you should at least have nodejs/npm and bower installed. If you don't already have bower,
+install [yeoman](http://yeoman.io/index.html) - it automatically installs bower and you may use it to generate scaffolding.
+
+    npm install -g yo
+
+This app used the generator-backbone for yeoman to generate scaffolding. It is not necessary to install it if you're not
+creating any new backbone models, views, or collections.
+
+    npm install -g generator-backbone
+
+# Once you've cloned the source code, cd to the source and run these commands in order to install the dependencies:
 
     npm install
     bower install
@@ -22,13 +37,34 @@ Open app/scripts/config.js and uncomment the following line in order to use the 
 
 # Development
 
+## URLS for cors proxy
+
 To use the corsproxy-enabled url in your code, insert Config.DevProxy into the urls that make AJAX requests.
 
     var url = "http://" + Config.DevProxy + "www.fromto.es/v2/locations.json?"+type+"=" + markerType
 
+## Generate backbone models:
+
+    yo backbone:model Profile
+    yo backbone:view ProfileView
+    yo backbone:collection ProfileCollection
+
+# App Flow
+
+The app bootstraps from App.js. Although there is an AppController and AppRouter, the app doesn't really need them.
+The app is initialised in App.js:
+
+    QuitoFrontend.on("initialize:after", function(){
+
+which fetches the ProfileList, pops them into a ProfileListView, and displays them in QuitoFrontend.profileListRegion.
+
+Most of the app logic is in utils.js, contrary to standard backbone/Marionette syntax. Most of the app events are detected here.
+This includes clicks on the menu items in the left nav as well as the map item clicks. TODO: migrate these events into the
+views that should be responsible for them.
+
 # Prepare the build
 
-Remove the proxy url from the ajax requests: "127.0.0.1:9292/"
+Once you're done w/ development, you must prepare the code for deployment. Remove the proxy url from the ajax requests: "127.0.0.1:9292/"
 
     var jqxhr = $.get("http://127.0.0.1:9292/rawgit.com/Betahackers/quito-backend/master/examples/locations.json", function (data) {
 
@@ -36,10 +72,14 @@ Remove the proxy url from the ajax requests: "127.0.0.1:9292/"
     Config.DevProxy = "";
 
 To deploy, run grunt deploy. This will generate the templates.js file and minimise the javascript. That task can do a lot more - see
-grunt.registerTask in Gruntfile.js
+grunt.registerTask in Gruntfile.js.
 
-To a quick test locally to see if it working. Your AJAX calls won't work (CORS) but it is nice to confirm. In another terminal
-cd to dist
+To a quick test locally to see if it working. Your AJAX calls won't work (CORS) but it is nice to confirm.
+A nice test server is [http-server](https://www.npmjs.org/package/http-server).
+
+    npm install -g http-server
+
+In another terminal cd to dist and enter
 
     http-server .
 
@@ -65,5 +105,3 @@ If only javascript was changed, you typically only need to copy one js file from
     git push heroku master
 
 TBD - automate this!
-
-
