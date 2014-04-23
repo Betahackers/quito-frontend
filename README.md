@@ -73,11 +73,18 @@ Once you're done w/ development, you must prepare the code for deployment. Remov
     //Config.DevProxy = "127.0.0.1:9292/";
     Config.DevProxy = "";
 
-To deploy, run grunt deploy. This will generate the templates.js file and minimise the javascript. That task can do a lot more - see
-grunt.registerTask in Gruntfile.js.
+To deploy, run
 
-To a quick test locally to see if it working. Your AJAX calls won't work (CORS) but it is nice to confirm.
-A nice test server is [http-server](https://www.npmjs.org/package/http-server).
+  grunt build
+
+This will generate the templates.js file and minimise the javascript. The "uglyfy" task is currently commented out -
+see grunt.registerTask in Gruntfile.js.
+
+The files for distribution are generated to the "dist" directory. If some of your files/media assets are not being copied
+over to dist, check the "copy" task.
+
+Do a quick test locally to see if it working. Your AJAX calls won't work (CORS - you did comment out the line in config.js didn't you?)
+but it is nice to confirm. A simple test server is [http-server](https://www.npmjs.org/package/http-server).
 
     npm install -g http-server
 
@@ -85,7 +92,7 @@ In another terminal cd to dist and enter
 
     http-server .
 
-The you can test it out on http://localhost:8080/app.html
+Then you can test it out on http://localhost:8080/app.html
 
 # Deploy to heraku
 

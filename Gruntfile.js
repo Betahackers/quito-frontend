@@ -206,6 +206,7 @@ module.exports = function (grunt) {
                       'fromto.png',
                       'fromtotransparency-white.png',
                       'itineraries/{,*/}*.*',
+                      'press-assets/{,*/}*.*',
                     ]
                 }]
             }
