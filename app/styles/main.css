@@ -233,6 +233,17 @@ body {
     height: 40px;
 }
 
+.profile-image-small {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.profile-name {
+    display: inline-block;
+    line-height: 1;
+}
+
 .profile-people-name {
     font-weight: 700;
     font-size: 14px;
@@ -315,6 +326,7 @@ body {
 }
 
 .profileItem a img {
+    vertical-align: inherit;
     margin-right: 5px;
     width: 30px;
 }

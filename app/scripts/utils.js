@@ -113,7 +113,6 @@
   function getProfilePanelBackgroundColor(type) {
     var bgcolor = ""
     if (type === 'by_mood') {
-      //background-color: #49c4c1;
       bgcolor = "#49c4c1";
     } else if (type === 'by_category') {
       //background-color: rgba(154,147,210,1);
@@ -128,9 +127,15 @@
     return bgcolor;
   }
   function fetchMarker(markerType, type) {
+
+    var backgroundColors = {
+        "by_mood": ["rgb(42, 197, 193)", "rgb(177, 231, 230)"],
+        "by_user": ["rgb(139, 204, 86)", "rgb(209, 235, 182)"],
+        "by_category": ["rgb(156, 146, 205)", "rgb(216, 211, 235)"],
+    };
+
     
     $('#ProfileArticlePanel').hide()
-    var profilePanelBackgroundColor = getProfilePanelBackgroundColor(type);
     var url = "http://" + Config.DevProxy + "www.fromto.es/v2/locations.json?"+type+"=" + markerType;
     var jqxhr = $.get(url, function (data) {
 //      console.log("success");
@@ -140,7 +145,7 @@
 
         if (type === 'by_user') {
           var model = new QuitoFrontend.Models.Profile();
-          model.set("profilePanelBackgroundColor", profilePanelBackgroundColor);
+          model.set("panelBackgroundColors", backgroundColors[type]);
           if ((typeof QuitoFrontend.markers[0].location.articles !== 'undefined') && (QuitoFrontend.markers[0].location.articles.length > 0)) {
             var user = null;
             if (typeof QuitoFrontend.markers[0].location.articles[0].article !== 'undefined') {
@@ -177,30 +182,16 @@
         var infoWindow = new google.maps.InfoWindow()
 
         for (var i = 0; i < QuitoFrontend.markers.length; i++) {
-          var marker = QuitoFrontend.markers[i].location
+          var marker = QuitoFrontend.markers[i].location;
 
-          var markerImage = type;
-          if (type === 'all') {
-            var randomChoice = Math.floor(Math.random() * (3 - 1 + 1)) + 1
-            switch (randomChoice) {
-              case 1:
-                markerImage = "by_mood"
-                break;
-              case 2:
-                markerImage = "by_category"
-                break;
-              case 3:
-                markerImage = "by_user"
-                break;
-            }
-          }
+          var markerType = (type === "all") ? ["by_mood", "by_category", "by_user"][Math.floor(Math.random() * 3)] : type;
 
+        marker.type = markerType;
           var markerDot = new google.maps.Marker({
             position: new google.maps.LatLng(marker.latitude, marker.longitude),
             map: QuitoFrontend.map,
-            icon: 'marker-images/point_' + markerImage + '.png',
-            marker: marker
-//            animation: google.maps.Animation.DROP
+            icon: 'marker-images/point_' + markerType + '.png',
+            marker: marker,
           });
 
           QuitoFrontend.markerDots.push(markerDot);
@@ -210,7 +201,7 @@
               var articleList = []
               var articles = this.marker.articles;
               var model = new QuitoFrontend.Models.Profile();
-              model.set("profilePanelBackgroundColor", profilePanelBackgroundColor);
+              model.set("panelBackgroundColors", backgroundColors[marker.type]);
               var foursquare = {};
               var article = this.marker.articles[0]
 
