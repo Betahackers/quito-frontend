@@ -75,7 +75,7 @@ Once you're done w/ development, you must prepare the code for deployment. Remov
 
 To deploy, run
 
-  grunt build
+    grunt build
 
 This will generate the templates.js file and minimise the javascript. The "uglyfy" task is currently commented out -
 see grunt.registerTask in Gruntfile.js.
