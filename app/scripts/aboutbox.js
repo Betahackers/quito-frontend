@@ -20,7 +20,7 @@
         'Fabienne Plangger',
         'Bert Balcaen',
         'Bernard Schembri',
-        'Anderj Dragisic',
+        'Andrej Dragisic',
         'Alessandra Fardin',
         '\u00DAlfur Kristj\u00E1nsson',
         'Rouli Diamantopoulou',
