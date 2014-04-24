@@ -94,9 +94,9 @@ In another terminal cd to dist and enter
 
 Then you can test it out on http://localhost:8080/app.html
 
-# Deploy to heraku
+# Deploy to Heroku
 
-Clone the keraku repository:
+Clone the heroku repository:
 
     heroku git:clone --app quito-backend
 
