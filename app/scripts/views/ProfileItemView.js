@@ -35,6 +35,7 @@ QuitoFrontend.Views = QuitoFrontend.Views || {};
       }
 
       var userId = model.get("id")
+      profile.set("panelBackgroundColors", QuitoFrontend.backgroundColors["by_user"]);
       displayProfileView(profile)
       fetchMarker(userId,"by_user")
 //      fetchMarker(userId,"users");

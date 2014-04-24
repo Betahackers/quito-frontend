@@ -239,9 +239,14 @@ body {
     height: 30px;
 }
 
+#profile-image {
+    width: 220px;
+}
+
 .profile-name {
     display: inline-block;
     line-height: 1;
+    vertical-align: super;
 }
 
 .profile-people-name {

@@ -18,8 +18,9 @@ QuitoFrontend.Views = QuitoFrontend.Views || {};
     selectedProfile: null,
 
     onShow: function(){
+//        var panelBackgroundColors = QuitoFrontend.backgroundColors;
         var panelBackgroundColors = this.model.get("panelBackgroundColors");
-        $(".profile").css("background-color", panelBackgroundColors[0]);
+      $(".profile").css("background-color", panelBackgroundColors[0]);
         $(".profile-content").css("background-color", panelBackgroundColors[1]);
     }
 

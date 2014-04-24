@@ -1,4 +1,10 @@
 
+QuitoFrontend.backgroundColors = {
+  "by_mood": ["rgb(42, 197, 193)", "rgb(177, 231, 230)"],
+  "by_user": ["rgb(139, 204, 86)", "rgb(209, 235, 182)"],
+  "by_category": ["rgb(156, 146, 205)", "rgb(216, 211, 235)"]
+};
+
   function initializeMap() {
       var mapOptions = {
           center: new google.maps.LatLng(41.39479, 2.1487679),
@@ -128,12 +134,6 @@
   }
   function fetchMarker(markerType, type) {
 
-    var backgroundColors = {
-        "by_mood": ["rgb(42, 197, 193)", "rgb(177, 231, 230)"],
-        "by_user": ["rgb(139, 204, 86)", "rgb(209, 235, 182)"],
-        "by_category": ["rgb(156, 146, 205)", "rgb(216, 211, 235)"],
-    };
-
     
     $('#ProfileArticlePanel').hide()
     var url = "http://" + Config.DevProxy + "www.fromto.es/v2/locations.json?"+type+"=" + markerType;
@@ -145,7 +145,7 @@
 
         if (type === 'by_user') {
           var model = new QuitoFrontend.Models.Profile();
-          model.set("panelBackgroundColors", backgroundColors[type]);
+          model.set("panelBackgroundColors", QuitoFrontend.backgroundColors[type]);
           if ((typeof QuitoFrontend.markers[0].location.articles !== 'undefined') && (QuitoFrontend.markers[0].location.articles.length > 0)) {
             var user = null;
             if (typeof QuitoFrontend.markers[0].location.articles[0].article !== 'undefined') {
@@ -159,7 +159,7 @@
             }
             var userThumbnailUrl = "http://www.fromto.es/images/fallback/thumb_avatar.png";
             if ((user != null) && (user.avatar_url_suffix !== "avatar.png")) {
-              userThumbnailUrl = user.avatar_url_prefix + user.avatar_url_suffix;
+              userThumbnailUrl = user.avatar_url_prefix + "medium_" + user.avatar_url_suffix;
             }
             model.set("user",user)
             model.set("userThumbnailUrl",userThumbnailUrl)
@@ -201,7 +201,7 @@
               var articleList = []
               var articles = this.marker.articles;
               var model = new QuitoFrontend.Models.Profile();
-              model.set("panelBackgroundColors", backgroundColors[marker.type]);
+              model.set("panelBackgroundColors", QuitoFrontend.backgroundColors[marker.type]);
               var foursquare = {};
               var article = this.marker.articles[0]
 
@@ -280,5 +280,6 @@
     QuitoFrontend.ProfileView = new QuitoFrontend.Views.ProfileView({selectedProfile:"Jorge", model:model});
     QuitoFrontend.mainRegion.show(QuitoFrontend.ProfileView)
   }
+
   
   
